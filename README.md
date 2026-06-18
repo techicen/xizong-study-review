@@ -1,16 +1,58 @@
 # xizong-study-review
 
-Public, sanitized Codex skill for reviewing and improving 考研西综 learning outputs.
+Public, sanitized Codex skill for turning 考研西综 study from passive notes into active, testable understanding.
 
-This repository contains a reusable skill template for a professional 西综 learning tutor. It keeps the full study workflow: active output, user-uploaded content identification, lecture/note/exercise intake, physiology-pathology-clinical callbacks, Obsidian inline critique, true-question reasoning boundaries, wrong-question review, and careful option-decision support.
+`xizong-study-review` is a professional learning-tutor skill for Codex. It helps users review their own medical exam notes, uploaded study materials, exercises, wrong-question reflections, and Obsidian outputs through one stable workflow: active output, learning-state judgment, physiology-pathology-clinical callbacks, true-question reasoning boundaries, wrong-cause diagnosis, and option-level decision support when the user provides a complete question.
 
-## 项目介绍
+It is not a question bank, prediction tool, or encyclopedia generator. Its job is more practical: help a learner find where understanding breaks, why a question feels difficult, and what the next small correction should be.
 
-`xizong-study-review` 是一个面向考研西综学习的 Codex skill。它的定位不是题库、押题工具或百科总结器，而是一个“专业学习助教”：帮助学习者把讲义、个人笔记、Obsidian 输出、错题和真题材料转化为可复述、可复盘、可做题的理解结构。
+## 中文介绍
 
-这个 skill 支持用户上传自己的西综资料、习题或真题文本，由 Codex 在本地识别资料类型、判断是否含答案/解析、建立私有索引，并围绕主动输出、机制链、生理-病理-内科 callback、错因诊断和真题结构理解给出反馈。公开仓库只提供工作流、规则和空白模板，不分发讲义、真题 PDF、答案解析或任何个人学习记录。
+如果你学西综时经常遇到这些情况：
 
-它最适合用于三类场景：第一，审稿学习者用自己的话写出的西综输出，判断是否真正理解；第二，贴着 Obsidian 原文插入 `Codex 核对` callout，帮助用户修正机制断点和表达问题；第三，在用户提供完整题干和选项时，辅助分析真题的命题结构、干扰项设计和选项排除路径。
+- 看完讲义觉得懂了，但一做题就选不出来；
+- 笔记越写越长，却不知道哪些内容真的能支撑做题；
+- 生理、病理、内科各学各的，临床题一出现就断链；
+- 错题复盘只停在“我不会”，找不到真正错因；
+- 真题解析看得懂，但看不出出题人怎么把知识点改造成题干和干扰项；
+
+那么这个 skill 就是为你准备的。
+
+`xizong-study-review` 是一个面向考研西综的 Codex 专业学习助教。它不替你写百科总结，也不做押题。它会贴着你的真实输出工作：判断你当前是刚理解、理解不稳、正在巩固，还是已经可以考试化；找出主要问题是知识缺口、机制断裂、讲义到题目的映射失败，还是选项优先级判断错误；再给你一个很小、很具体的下一步动作。
+
+它支持用户上传自己的西综讲义、笔记、习题或真题文本，由 Codex 在本地识别资料类型、可读性、是否含答案/解析和适用场景。公开仓库只提供规则、工作流和空白模板，不分发讲义、真题 PDF、答案解析或个人学习记录。
+
+## English Introduction
+
+Most medical exam study tools answer the wrong question. They help you collect more information, but they do not tell you whether you can actually use it under exam pressure.
+
+`xizong-study-review` is built around a different idea: learning should become visible. When you paste a note, upload a study file, review a wrong question, or provide a full exam question, the skill helps Codex ask the questions that matter:
+
+- Can you explain the core mechanism in your own words?
+- Does your note connect physiology, pathology, and clinical reasoning?
+- Did you understand the knowledge point but fail to map it into a question?
+- Was the wrong answer caused by a knowledge gap, a broken mechanism chain, a trap option, or a priority error?
+- Is this question asking for understanding, discrimination, first-choice decision, or option elimination?
+
+The result is not a longer summary. The result is a tighter learning loop: output, critique, callback, repair, and then a small next task.
+
+## 为什么值得安装
+
+- **它保护你的主动输出。** 它不会默认重写整篇笔记，而是保留你的原文，在关键位置插入 `Codex 核对`，告诉你哪里影响理解和做题。
+- **它能诊断“为什么错”。** 错题不会只归结为“不会”，而会拆成 knowledge gap、mechanism break、mapping failure、examiner trap not recognized、clinical decision error、threshold / priority error 等类型。
+- **它把生理、病理、内科接起来。** 学到一个疾病时，它会提醒你该回扣哪一个生理机制、哪一个病理变化、哪一个内科表现或决策。
+- **它让真题变成反馈工具。** 真题只用于理解命题表达、干扰项设计和正确决策路径，不用于押题或制造题库。
+- **它支持用户自己的资料。** 用户可以上传自己的讲义、笔记、习题和真题文本，skill 会先做资料识别和风险判断，再决定适合审稿、复盘、结构分析还是选项决策。
+- **它在该快的时候能快。** 当用户给出完整题干和选项，并明确需要决策时，Decision Engine v1 会进入选项排除、决策压缩和 FINAL DECISION。
+
+## Why Install It
+
+- **It keeps the learner in charge.** The skill does not replace your thinking with a polished AI summary. It reviews your own output and points to the exact part that needs repair.
+- **It diagnoses the failure mode, not just the answer.** A wrong question can mean missing knowledge, broken mechanism reasoning, poor lecture-to-question mapping, trap-option failure, or priority inversion. The skill separates these cases.
+- **It bridges basic science and clinical reasoning.** Physiology, pathology, and internal medicine are treated as one chain instead of disconnected subjects.
+- **It uses true questions responsibly.** Public true questions can be used locally to understand exam structure and distractors, but the repository does not redistribute PDFs, answer keys, explanations, or private OCR outputs.
+- **It works with user-uploaded material.** Users bring their own notes, lectures, exercises, and question text; the skill provides the workflow for identifying, reviewing, and learning from them.
+- **It supports fast decisions only when appropriate.** Option elimination and forced choice are activated for complete question stems and options, not for ordinary learning or note review.
 
 ## What This Is
 

@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Support users who upload their own 西综 materials: lecture PDFs, textbook excerpts, personal notes, Obsidian drafts, exercises, true questions, answer keys, explanations, screenshots, or OCR text.
+Support users who upload their own 西综 materials: lecture PDFs, textbook excerpts, personal notes, note/document drafts from Obsidian, Notion, FlowUs, Feishu/Lark Docs, Tencent Docs, Yuque, WPS, Word, Google Docs, exercises, true questions, answer keys, explanations, screenshots, or OCR text.
 
 The skill may identify, index, and analyze user-provided content locally. It must not redistribute source files or turn the public repository into a source-material archive.
 
@@ -12,7 +12,7 @@ The skill may identify, index, and analyze user-provided content locally. It mus
    - lecture
    - lecture index
    - personal note
-   - Obsidian draft
+   - note/document draft
    - exercise
    - true question
    - answer key
@@ -29,7 +29,7 @@ The skill may identify, index, and analyze user-provided content locally. It mus
 3. Check whether answers or explanations are visible.
 4. Decide mode:
    - learning output support
-   - Obsidian review
+   - note/document review
    - wrong-question review
    - true-question structure analysis
    - blind solving

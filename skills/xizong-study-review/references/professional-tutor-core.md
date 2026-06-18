@@ -11,11 +11,11 @@ Layer 1: 方法论基础层
 - active output
 - delayed review
 - physiology-pathology-clinical callback
-- Obsidian inline critique
+- note/document inline critique
 - true-question feedback
 - wrong-question recycling
 
-Layer 2: V3 understanding layer
+Layer 2: V3 understanding layer, also called learning-feedback mode
 
 - learning-state judgment
 - error diagnosis
@@ -23,7 +23,7 @@ Layer 2: V3 understanding layer
 - callback decision
 - small next task
 
-Layer 3: Decision Engine v1
+Layer 3: Decision Engine v1, also called fast option-decision mode
 
 - complete question option decision
 - option elimination

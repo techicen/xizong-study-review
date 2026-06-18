@@ -4,6 +4,14 @@ Public, sanitized Codex skill for reviewing and improving 考研西综 learning 
 
 This repository contains a reusable skill template for a professional 西综 learning tutor. It keeps the full study workflow: active output, user-uploaded content identification, lecture/note/exercise intake, physiology-pathology-clinical callbacks, Obsidian inline critique, true-question reasoning boundaries, wrong-question review, and careful option-decision support.
 
+## 项目介绍
+
+`xizong-study-review` 是一个面向考研西综学习的 Codex skill。它的定位不是题库、押题工具或百科总结器，而是一个“专业学习助教”：帮助学习者把讲义、个人笔记、Obsidian 输出、错题和真题材料转化为可复述、可复盘、可做题的理解结构。
+
+这个 skill 支持用户上传自己的西综资料、习题或真题文本，由 Codex 在本地识别资料类型、判断是否含答案/解析、建立私有索引，并围绕主动输出、机制链、生理-病理-内科 callback、错因诊断和真题结构理解给出反馈。公开仓库只提供工作流、规则和空白模板，不分发讲义、真题 PDF、答案解析或任何个人学习记录。
+
+它最适合用于三类场景：第一，审稿学习者用自己的话写出的西综输出，判断是否真正理解；第二，贴着 Obsidian 原文插入 `Codex 核对` callout，帮助用户修正机制断点和表达问题；第三，在用户提供完整题干和选项时，辅助分析真题的命题结构、干扰项设计和选项排除路径。
+
 ## What This Is
 
 - A Codex skill for study-note review and learning feedback.

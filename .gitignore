@@ -1,0 +1,41 @@
+# macOS
+.DS_Store
+
+# Private study materials
+*.pdf
+*.PDF
+*.zip
+*.ZIP
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# Private workspaces and generated runs
+_codex_xizong_*/
+tmp/
+
+# Obsidian and personal notes
+.obsidian/
+01_内科输出/
+02_生理复盘/
+03_病理复盘/
+04_错题回收/
+
+# Personal state files; publish templates only
+learning_state_profile.md
+error_pattern_map.md
+obsidian_review_ledger.md
+learning_state_calibration_report.md
+skill_patch_candidates.md
+
+# Extracted or structured question data
+*.jsonl
+*.sqlite
+*.db
+ocr/
+masked/
+sealed_answers/
+user_uploads/
+source_materials/
+local_question_db/

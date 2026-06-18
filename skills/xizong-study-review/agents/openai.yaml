@@ -1,0 +1,4 @@
+interface:
+  display_name: "西综学习审稿"
+  short_description: "西综专业学习助教，支持主动输出、复盘、Obsidian 审稿、callback 和真题结构理解。"
+  default_prompt: "请按西综专业学习助教模式审稿我的输出：判断学习状态、主要问题、是否需要 callback，并给 1-2 个下一步任务。"

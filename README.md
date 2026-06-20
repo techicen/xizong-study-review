@@ -397,7 +397,7 @@ Do not generate a question bank. Do not redistribute source content.
 
 这个仓库是公开、安全、脱敏版本。它只包含学习工作流、提示词合同、模板和边界规则，不包含讲义 PDF、真题 PDF、答案解析、OCR 文本、个人笔记或私人学习记录。
 
-![学习闭环](assets/preview/preview-learning-loop.svg)
+![学习闭环](assets/preview/preview-learning-loop-zh.svg)
 
 ## 快速开始
 
@@ -443,13 +443,13 @@ scripts\install-skill.bat
 - `examples/05-decision-engine-sample.md`：理解稳定后的选项决策。
 - `examples/06-sanitized-ob-style-inline-audit.md`：真实工作流风格的脱敏 Obsidian 原文批注案例。
 
-![文档软件适配](assets/preview/preview-document-apps.svg)
+![文档软件适配](assets/preview/preview-document-apps-zh.svg)
 
-![错因诊断](assets/preview/preview-error-diagnosis.svg)
+![错因诊断](assets/preview/preview-error-diagnosis-zh.svg)
 
 真实工作流风格脱敏预览：
 
-![Obsidian 原文批注风格](assets/preview/preview-ob-style-inline-audit.svg)
+![Obsidian 原文批注风格](assets/preview/preview-ob-style-inline-audit-zh.svg)
 
 ## 为什么它值得安装
 

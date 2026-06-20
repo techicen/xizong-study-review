@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#f8fafc"/>
+  <text x="80" y="90" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="42" font-weight="700" fill="#111827">错题不是只写“知识点不会”</text>
+  <text x="80" y="132" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="24" fill="#475569">真正重要的是：这次为什么错？下一步该修哪里？</text>
+  <g font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="24" font-weight="700">
+    <rect x="100" y="210" width="300" height="82" rx="16" fill="#fee2e2"/>
+    <text x="156" y="260" fill="#7f1d1d">知识缺口</text>
+    <rect x="450" y="210" width="300" height="82" rx="16" fill="#ffedd5"/>
+    <text x="506" y="260" fill="#9a3412">机制断裂</text>
+    <rect x="800" y="210" width="300" height="82" rx="16" fill="#fef3c7"/>
+    <text x="836" y="260" fill="#78350f">映射失败</text>
+    <rect x="100" y="350" width="300" height="82" rx="16" fill="#dcfce7"/>
+    <text x="146" y="400" fill="#14532d">干扰项陷阱</text>
+    <rect x="450" y="350" width="300" height="82" rx="16" fill="#dbeafe"/>
+    <text x="506" y="400" fill="#1e3a8a">临床决策</text>
+    <rect x="800" y="350" width="300" height="82" rx="16" fill="#ede9fe"/>
+    <text x="842" y="400" fill="#5b21b6">优先级错误</text>
+  </g>
+  <rect x="135" y="520" width="930" height="78" rx="14" fill="#111827"/>
+  <text x="185" y="568" font-family="Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif" font-size="26" font-weight="700" fill="#ffffff">错因不同，下一步任务也必须不同。</text>
+</svg>

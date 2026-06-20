@@ -1,12 +1,25 @@
 # Xizong Exam Intelligence Tutor
 
-A public Codex skill for active-output review, note critique, wrong-question diagnosis, and exam-reasoning feedback for the Chinese postgraduate medical entrance exam, commonly known as 考研西综 / 306.
+Most 西综 learners do not fail because they need one more summary. They fail at the harder step: turning lecture knowledge into their own explanation, then turning that explanation into exam decisions.
+
+`Xizong Exam Intelligence Tutor` is a public Codex skill for that exact gap. It reviews the learner's own output, identifies whether the understanding is stable, catches mechanism breaks, diagnoses wrong-question patterns, and only enters fast option-decision mode when a complete question stem and options are provided.
+
+It is not a question-bank generator, prediction tool, or encyclopedia summarizer. It is a professional learning tutor for active output, review, callback, and exam-reasoning feedback for 考研西综 / 306.
 
 Skill folder: `skills/xizong-study-review`
 
-This repository is a public, sanitized release. It contains the learning workflow, prompt contracts, templates, and safety boundaries. It does not contain lecture PDFs, true-question PDFs, answer keys, explanations, OCR outputs, personal notes, or private learning records.
+This repository is a public, sanitized release. It contains the learning workflow, prompt contracts, templates, preview assets, and safety boundaries. It does not contain lecture PDFs, true-question PDFs, answer keys, explanations, OCR outputs, unredacted personal notes, or private learning records. One redacted workflow screenshot is included with permission to show how inline review looks in practice.
 
 ![Learning loop](assets/preview/preview-learning-loop.svg)
+
+## What You Get
+
+1. **Output review that preserves the learner's words.** Codex inserts targeted review blocks under the original paragraph instead of replacing the note with a polished AI summary.
+2. **Learning-state feedback.** It distinguishes `beginner`, `unstable`, `consolidating`, `exam-ready`, `confused-zone`, and `unsure`.
+3. **Mechanism repair.** It connects physiology, pathology, and clinical reasoning when the chain breaks.
+4. **Wrong-question diagnosis.** It separates knowledge gaps, mechanism breaks, mapping failures, examiner traps, clinical decision errors, and priority errors.
+5. **Responsible true-question use.** True questions are used to understand exam expression and distractor design, not to redistribute source files or predict the exam.
+6. **Decision Engine v1 when appropriate.** If the learner provides a complete stem and options, Codex can compress reasoning into option elimination and a forced `FINAL DECISION`.
 
 ## Quick Start
 
@@ -58,9 +71,13 @@ Preview assets:
 
 ![Error diagnosis](assets/preview/preview-error-diagnosis.svg)
 
-Sanitized real-workflow style:
+Sanitized inline-audit preview:
 
 ![Obsidian-style inline audit](assets/preview/preview-ob-style-inline-audit.svg)
+
+Redacted real-workflow screenshot:
+
+![Redacted real Obsidian workflow](assets/preview/ob-workflow-redacted.png)
 
 ## Why This Skill Exists
 
@@ -337,7 +354,7 @@ This public release does not include:
 - answer keys
 - answer explanations
 - OCR outputs
-- personal notes or note-app exports
+- unredacted personal notes or note-app exports
 - private learning-state profiles
 - local filesystem paths
 
@@ -391,13 +408,30 @@ Do not generate a question bank. Do not redistribute source content.
 
 # 西综智能学习助教
 
-一个面向考研西综 / 306 的 Codex 公共 skill，用来做主动输出审稿、笔记原文批注、错题错因诊断、生理-病理-内科 callback、真题结构理解和完整题干选项下的考试决策辅助。
+很多人学西综卡住，不是因为资料不够，而是因为“看懂了”到“能讲清楚”，再到“能做题选出来”之间断了一截。
+
+`Xizong Exam Intelligence Tutor` 就是为这段断层做的公开版 Codex skill。它不是题库，不是押题工具，也不是一键生成百科总结的 AI。它更像一个专业西综学习助教：看你的原文输出，判断你现在到底懂到哪一步，找出机制链断点和错因，再给你一个很小但能推进学习的下一步。
+
+它可以做主动输出审稿、笔记原文批注、错题错因诊断、生理-病理-内科 callback、真题结构理解，以及在完整题干和选项出现时的考试决策辅助。
 
 公开版名称是 `Xizong Exam Intelligence Tutor`，安装目录仍然是 `skills/xizong-study-review`。这样既保留稳定的 skill 触发名，也让公开展示更清晰。
 
-这个仓库是公开、安全、脱敏版本。它只包含学习工作流、提示词合同、模板和边界规则，不包含讲义 PDF、真题 PDF、答案解析、OCR 文本、个人笔记或私人学习记录。
+这个仓库是公开、安全、脱敏版本。它只包含学习工作流、提示词合同、模板、预览图和边界规则，不包含讲义 PDF、真题 PDF、答案解析、OCR 文本、未脱敏个人笔记或私人学习记录。仓库中保留了一张已授权、已遮挡讲义来源的真实工作流截图，用来展示实际审稿效果。
 
 ![学习闭环](assets/preview/preview-learning-loop-zh.svg)
+
+真实 Obsidian 审稿工作流脱敏预览：
+
+![真实 Obsidian 审稿工作流脱敏预览](assets/preview/ob-workflow-redacted.png)
+
+## 你能立刻感受到的变化
+
+1. **它不替你写笔记。** 它会保留你的原文，在关键句下面插入 `Codex 核对`，告诉你哪里只是背了结论，哪里会影响做题。
+2. **它会判断你到底懂没懂。** 不是每次都让你刷题，而是先判断你是刚懂一点、理解不稳、正在巩固，还是已经可以考试化。
+3. **它能找出真正错因。** 错题不再只写“知识点不会”，而是拆成知识缺口、机制断裂、映射失败、干扰项未识别、临床决策错误或优先级错误。
+4. **它会把生理、病理、内科接起来。** 如果内科表现背后的生理/病理链断了，它会让你只回扣一个小点，不会让你整章重学。
+5. **它会安全使用真题。** 真题只用于理解命题表达、干扰项和决策路径，不押题、不分发文件、不生成题库。
+6. **它支持主流文档软件。** Obsidian、Notion、FlowUs、飞书文档、腾讯文档、语雀、WPS、Word、Google Docs、普通 Markdown、纯文本都能适配。
 
 ## 快速开始
 
@@ -449,7 +483,7 @@ scripts\install-skill.bat
 
 真实工作流风格脱敏预览：
 
-![Obsidian 原文批注风格](assets/preview/preview-ob-style-inline-audit-zh.svg)
+![Obsidian 原文批注风格](assets/preview/ob-workflow-redacted.png)
 
 ## 为什么它值得安装
 
@@ -748,7 +782,7 @@ skill 会根据学习反馈选择下一步：
 - 答案 key
 - 答案解析
 - OCR 输出
-- 个人笔记或笔记软件导出内容
+- 未脱敏个人笔记或笔记软件导出内容
 - 个人学习状态记录
 - 本地绝对路径
 

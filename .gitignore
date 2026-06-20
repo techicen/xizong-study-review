@@ -10,6 +10,7 @@
 *.jpg
 *.jpeg
 *.webp
+!assets/preview/ob-workflow-redacted.png
 
 # Private workspaces and generated runs
 _codex_xizong_*/

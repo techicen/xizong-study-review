@@ -2,10 +2,10 @@
 
 ## Must Pass Before GitHub Publish
 
-- [ ] No lecture PDFs, ZIPs, screenshots, OCR outputs, or paid-course materials.
+- [ ] No lecture PDFs, ZIPs, unredacted screenshots, OCR outputs, or paid-course materials.
 - [ ] No true-question PDFs, answer keys, or explanations.
 - [ ] Public true-question support is limited to workflows, schemas, and derived local-processing rules.
-- [ ] No personal Obsidian notes.
+- [ ] No unredacted personal Obsidian notes.
 - [ ] No personal learning-state profile or wrong-question ledger.
 - [ ] No local absolute paths or personal filesystem paths.
 - [ ] No private method notes that identify personal materials.
@@ -14,7 +14,7 @@
 - [ ] README says users may upload their own materials for local processing.
 - [ ] README includes quick install instructions using `scripts/install-skill.sh` and `scripts/install-skill.bat`.
 - [ ] `examples/` contains only fictional, simplified, or user-provided-safe demo content.
-- [ ] `assets/preview/` contains no real lecture, question, answer, OCR, or personal note content.
+- [ ] `assets/preview/` contains no real lecture, question, answer, OCR, or unredacted personal note content.
 - [ ] `tests/regression/` covers note review, document-platform adaptation, wrong-question review, Decision Engine boundaries, and safety boundaries.
 - [ ] `skills/xizong-study-review/SKILL.md` validates with `quick_validate.py`.
 - [ ] License choice is deliberate.
@@ -39,4 +39,5 @@
 - simplified COPD/asthma/pneumonia demo text
 - installation scripts
 - SVG preview images
+- permissioned redacted workflow screenshots
 - regression test prompts with no real copyrighted source content

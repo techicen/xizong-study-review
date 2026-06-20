@@ -1,412 +1,51 @@
 # Xizong Exam Intelligence Tutor
-
-Most 西综 learners do not fail because they need one more summary. They fail at the harder step: turning lecture knowledge into their own explanation, then turning that explanation into exam decisions.
-
-`Xizong Exam Intelligence Tutor` is a public Codex skill for that exact gap. It reviews the learner's own output, identifies whether the understanding is stable, catches mechanism breaks, diagnoses wrong-question patterns, and only enters fast option-decision mode when a complete question stem and options are provided.
-
-It is not a question-bank generator, prediction tool, or encyclopedia summarizer. It is a professional learning tutor for active output, review, callback, and exam-reasoning feedback for 考研西综 / 306.
-
-Skill folder: `skills/xizong-study-review`
-
-This repository is a public, sanitized release. It contains the learning workflow, prompt contracts, templates, preview assets, and safety boundaries. It does not contain lecture PDFs, true-question PDFs, answer keys, explanations, OCR outputs, unredacted personal notes, or private learning records. One redacted workflow screenshot is included with permission to show how inline review looks in practice.
-
-![Learning loop](assets/preview/preview-learning-loop.svg)
-
-## What You Get
-
-1. **Output review that preserves the learner's words.** Codex inserts targeted review blocks under the original paragraph instead of replacing the note with a polished AI summary.
-2. **Learning-state feedback.** It distinguishes `beginner`, `unstable`, `consolidating`, `exam-ready`, `confused-zone`, and `unsure`.
-3. **Mechanism repair.** It connects physiology, pathology, and clinical reasoning when the chain breaks.
-4. **Wrong-question diagnosis.** It separates knowledge gaps, mechanism breaks, mapping failures, examiner traps, clinical decision errors, and priority errors.
-5. **Responsible true-question use.** True questions are used to understand exam expression and distractor design, not to redistribute source files or predict the exam.
-6. **Decision Engine v1 when appropriate.** If the learner provides a complete stem and options, Codex can compress reasoning into option elimination and a forced `FINAL DECISION`.
-
-## Quick Start
-
-Clone the repository:
-
-```bash
-git clone https://github.com/techicen/xizong-study-review.git
-cd xizong-study-review
-```
-
-Install the skill:
-
-```bash
-bash scripts/install-skill.sh
-```
-
-On Windows:
-
-```bat
-scripts\install-skill.bat
-```
-
-Restart Codex, then try:
-
-```markdown
-Use the xizong-study-review skill.
-
-Please review my 西综 note as a professional learning tutor:
-1. Judge my learning state.
-2. Identify only 1-2 main problems.
-3. Preserve my original wording.
-4. Insert platform-adapted review blocks under relevant paragraphs.
-5. Add Learning Feedback.
-6. Give only 1-2 next tasks.
-```
-
-## See It In Action
-
-- `examples/01-copd-note-review.md` — note review with learning-state feedback.
-- `examples/02-feishu-doc-review-table.md` — Feishu/Lark Docs review table.
-- `examples/03-notion-flowus-review-block.md` — Notion/FlowUs portable block.
-- `examples/04-wrong-question-review.md` — wrong-question diagnosis.
-- `examples/05-decision-engine-sample.md` — fast option decision after understanding is stable.
-- `examples/06-sanitized-ob-style-inline-audit.md` — sanitized Obsidian-style inline audit inspired by a private workflow.
-
-Preview assets:
-
-![Document apps](assets/preview/preview-document-apps.svg)
-
-![Error diagnosis](assets/preview/preview-error-diagnosis.svg)
-
-Sanitized inline-audit preview:
-
-![Obsidian-style inline audit](assets/preview/preview-ob-style-inline-audit.svg)
-
-Redacted real-workflow screenshot:
-
-![Redacted real Obsidian workflow](assets/preview/ob-workflow-redacted.png)
-
-## Why This Skill Exists
-
-Most study tools help learners collect more information. This skill is designed for a harder question:
-
-Can the learner actually explain, repair, and use what they studied?
-
-`Xizong Exam Intelligence Tutor` turns Codex into a professional 西综 learning tutor. It does not replace the learner with an AI summary. It watches the learner's own output, finds the weak link, and gives a small next action.
-
-It is built for the moment when a learner says:
-
-- "I understood the lecture, but I cannot choose the answer."
-- "My note looks complete, but I do not know whether it supports solving questions."
-- "I know physiology, pathology, and internal medicine separately, but clinical questions break the chain."
-- "I read the explanation, but I still cannot see how the examiner hid the answer."
-- "My wrong-question review always becomes 'I did not know this', and stops there."
-
-This skill helps Codex respond with learning-state judgment, mechanism repair, callback suggestions, true-question reasoning boundaries, and option decision support only when the question is complete.
-
-## What Makes It Different
-
-- **Active output first.** The skill asks the learner to explain in their own words before accepting passive summaries.
-- **Document-app friendly review.** It preserves the user's original note and inserts targeted review blocks under the relevant paragraphs. Obsidian works beautifully, but Notion, FlowUs, Feishu/Lark Docs, Tencent Docs, Yuque, WPS, Word, Google Docs, Markdown files, or plain copy-paste also work.
-- **Learning-state aware.** It classifies the learner as `beginner`, `unstable`, `consolidating`, `exam-ready`, `confused-zone`, or `unsure`.
-- **Wrong-cause diagnosis.** It separates `knowledge gap`, `mechanism break`, `mapping failure`, `examiner trap not recognized`, `clinical decision error`, and `threshold / priority error`.
-- **Physiology-pathology-clinical callbacks.** It helps connect basic mechanisms with clinical decisions instead of letting subjects stay isolated.
-- **Responsible true-question use.** True questions are used to understand exam expression, distractor design, and decision paths, not to predict the exam or distribute source files.
-- **Decision support only when appropriate.** Fast option elimination and `FINAL DECISION` are activated only when the user provides a complete stem and options.
-- **User-upload friendly.** Learners can upload their own lecture notes, exercises, question text, screenshots, or OCR files. The skill first identifies file type, readability, answer leakage risk, and suitable use.
-
-## The Two Modes In Plain Language
-
-The skill uses a few internal names, but users do not need to understand them as software versions. They simply describe what kind of help Codex should provide.
-
-| Name | Plain Meaning | Use When | Output Style |
-| --- | --- | --- | --- |
-| Tutor Core | The basic study-coach workflow | Any learning output, note, source upload, or wrong-question review | Preserve the learner's work, identify the task, and choose the right response |
-| V3 Understanding Layer | Learning feedback mode | The learner is explaining, reviewing, confused, or trying to understand why they got something wrong | Judge learning state, find the weak link, repair the mechanism, and give one small next task |
-| Decision Engine v1 | Fast option-decision mode | The learner provides a complete stem and options and needs to choose under exam pressure | Eliminate options, detect traps, compress the decision, and output `FINAL DECISION` |
-
-Simple rule:
-
-```text
-Default to V3 for learning.
-Use Decision Engine v1 only for complete questions with options.
-```
-
-In other words, the skill is not trying to make every conversation feel like an exam. It first asks: "Do you understand this well enough to make a decision?" If not, it stays in V3 and repairs the understanding.
-
-## Works With Mainstream Note And Document Apps
-
-Obsidian is only one convenient format because it supports Markdown callouts. The same review loop works in mainstream note and document apps:
-
-- **Obsidian:** use `> [!warning] Codex 核对` callouts.
-- **Notion:** paste the review block under the original paragraph as a quote, toggle, callout, or synced block.
-- **FlowUs:** paste the review block under the original paragraph as a quote/callout-style block.
-- **Feishu Docs / Lark Docs:** paste a `Codex Review` block under the paragraph, or turn each row into document comments.
-- **Tencent Docs / Yuque:** paste a compact review table below the original paragraph.
-- **WPS / Microsoft Word / Google Docs:** use comment-style review, paragraph quotes, or a small table.
-- **Plain Markdown:** keep the original text, then add a `Codex Review` block below it.
-- **No note app at all:** paste the paragraph directly into Codex and keep the corrected version wherever you study.
-
-Portable review block:
-
-```markdown
-> Codex Review
-> Problem:
-> Why it matters for understanding/questions:
-> Fix direction:
-> Source/evidence:
-> Next action:
-```
-
-The important part is not the app. The important part is that Codex reviews the learner's own words without replacing them with a polished AI summary.
-
-For collaborative document tools such as Feishu Docs, Tencent Docs, Word, or Google Docs, this table format is often easier to paste:
-
-```markdown
-| Original paragraph | Problem | Why it matters | Fix direction | Evidence/source | Next action |
-| --- | --- | --- | --- | --- | --- |
-| Paste the learner's paragraph here | ... | ... | ... | ... | ... |
-```
-
-## Document-App Adaptation And Collaboration
-
-The skill can adapt its output to the user's note or document software. It first identifies the platform, then chooses the right review format.
-
-| Platform | Recommended Output | Best For |
-| --- | --- | --- |
-| Obsidian | Markdown callouts | Users who keep atomic notes and want inline `Codex 核对` blocks |
-| Notion | Callout/toggle/quote-style blocks | Users who want collapsible review notes under each paragraph |
-| FlowUs | Quote or callout-style blocks | Users who want Notion-like blocks in a Chinese workspace |
-| Feishu Docs / Lark Docs | Review table or comment-style bullets | Users who work in collaborative documents |
-| Tencent Docs | Compact review table | Users who want team-readable correction tables |
-| Yuque | Paragraph quote plus review block | Users who write structured knowledge-base notes |
-| WPS / Word / Google Docs | Comment-style review or table | Users who prefer document editing and review workflows |
-| Plain Markdown / text | Portable `Codex Review` block | Users who do not use a dedicated note app |
-
-There are three collaboration levels:
-
-1. **Paste-ready collaboration:** Codex outputs a platform-specific block/table that the user can paste into the document.
-2. **Export-aware collaboration:** if the user uploads Markdown, DOCX, HTML, CSV, or exported text, Codex preserves structure and produces a review result matched to that export.
-3. **Direct document collaboration:** if a browser, connector, API, or editable document file is available and the user permits it, Codex can work closer to the actual document, such as suggesting exact insertion points or preparing comment-style patches.
-
-By default, the public skill promises paste-ready and export-aware collaboration. Direct editing depends on the tools and permissions available in the user's Codex environment.
-
-## End-to-End Example
-
-This example shows the intended public workflow: install the skill, write a prompt, paste a note, receive inline critique, revise the note, then ask for a second review. The sample content below is fictional and simplified.
-
-### 1. Install The Skill
-
-The fastest path:
-
-```bash
-git clone https://github.com/techicen/xizong-study-review.git
-cd xizong-study-review
-bash scripts/install-skill.sh
-```
-
-Manual install also works:
-
-```bash
-cp -R xizong-study-review/skills/xizong-study-review ~/.codex/skills/
-```
-
-Start a new Codex session. The skill is now available as `xizong-study-review`.
-
-### 2. Optional: Prepare Private Learning Files
-
-The public repository ships blank templates only. You can copy them into your own private study folder:
-
-```bash
-mkdir -p my-xizong-learning-state
-cp xizong-study-review/skills/xizong-study-review/assets/templates/*.template.md my-xizong-learning-state/
-```
-
-Use these templates for private records such as learning-state profiles, error-pattern maps, source manifests, and local question schemas. Do not publish those private records.
-
-### 3. First Prompt: Ask For Note Review
-
-Use a prompt like this:
-
-```markdown
-Use the xizong-study-review skill.
-
-Please review this study note as a professional 西综 learning tutor.
-
-Rules:
-1. Do not rewrite the full note.
-2. Preserve my original text.
-3. Judge my learning state.
-4. Identify only 1-2 main problems.
-5. Insert review blocks directly under the relevant paragraphs.
-6. Add Learning Feedback.
-7. Give only 1-2 next tasks.
-
-My note app is: Obsidian / Notion / FlowUs / Feishu Docs / Tencent Docs / Yuque / Word / Google Docs / Markdown / plain text.
-```
-
-### 4. Example User Note Output
-
-```markdown
-# COPD
-
-COPD 的本质是慢性气流受限，主要和小气道炎症有关。
-
-患者会出现呼气困难，是因为气道变窄，气体排不出来。
-
-肺气肿时肺泡被破坏，所以会影响换气。治疗上主要用支气管扩张剂。
-```
-
-### 5. Example Skill Output
-
-```markdown
-## 当前学习状态
-
-unstable
-
-依据：你已经抓到了 COPD 的关键词：气流受限、小气道炎症、呼气困难、肺气肿、支气管扩张剂。但机制链还没有完全闭合，尤其是“小气道病变”和“肺泡弹性回缩力下降”如何共同导致呼气相气流受限。
-
-## 主要问题
-
-- mechanism break
-- callback missing
-
-## 该用哪一层
-
-V3
-
-## 处理结果
-
-# COPD
-
-COPD 的本质是慢性气流受限，主要和小气道炎症有关。
-
-> [!warning] Codex 核对
-> **问题**：这句话方向对，但还不够考试化。COPD 的气流受限不能只归因于小气道炎症，还要补上肺泡壁破坏后弹性回缩力下降。
-> **为什么影响理解/做题**：如果只记“小气道炎症”，遇到肺气肿、呼气性气流受限、残气量增加、桶状胸等题干时，容易把机制链接不上。
-> **修正方向**：改成“小气道阻塞 + 肺泡弹性回缩力下降，共同造成呼气相气流受限”。
-> **讲义/真题依据**：请回扣用户本地 COPD 讲义；若未上传资料，标记 `needs_user_source`。
-> **下一步动作**：用一句话解释为什么 COPD 是“呼气更困难”。
-
-患者会出现呼气困难，是因为气道变窄，气体排不出来。
-
-> [!warning] Codex 核对
-> **问题**：这句是现象描述，还没有解释“为什么呼气时更明显”。
-> **为什么影响理解/做题**：考试常把机制藏在呼气、残气量、肺过度充气、FEV1/FVC 下降这些表达里。
-> **修正方向**：补一句“呼气时胸内压升高，小气道更易塌陷；弹性回缩力下降使气体排出更差”。
-> **讲义/真题依据**：本地讲义锚点待用户上传后确认。
-> **下一步动作**：把这句改成机制链，不要只写症状。
-
-肺气肿时肺泡被破坏，所以会影响换气。治疗上主要用支气管扩张剂。
-
-> [!success] Codex 核对
-> 这段可以保留。它的优点是：已经把肺气肿和治疗方向放在同一段里，后续可以继续补“为什么支气管扩张剂是症状改善而不是逆转肺泡破坏”。
-
-## Learning Feedback
-
-- 理解程度判断：听懂了关键词，但机制链仍不稳定。
-- 是否真正掌握机制链：暂时没有完全掌握。
-- 是否存在认知断点：存在，断在“呼气相气流受限”的力学机制。
-- 下一步应该：加深讲解，然后做一类机制链真题验证。
-
-## 下一步
-
-1. 重写一句话：COPD 为什么以呼气性气流受限为核心？
-2. 回扣一个生理点：胸内压变化如何影响小气道塌陷？
-```
-
-### 6. Revision Prompt
-
-After revising the note, ask for a second pass:
-
-```markdown
-I revised the COPD paragraph based on your Codex 核对.
-
-Please do a second review:
-1. Judge whether the mechanism chain is now complete.
-2. Do not add new knowledge unless the chain is still broken.
-3. Tell me whether I can move from V3 learning review to true-question validation.
-```
-
-### 7. Second-Pass Result
-
-The skill should now decide one of three paths:
-
-- If the mechanism is still broken: stay in V3 and repair one point.
-- If the mechanism is basically stable: move to a small true-question validation task.
-- If the learner provides a complete question stem and options: activate Decision Engine v1 for option elimination and forced choice.
-
-### 8. Complete Question Decision Prompt
-
-Only use this when you already have the full stem and options:
-
-```markdown
-I understand the COPD mechanism, but I am stuck between options B and D.
-
-Use Decision Engine v1:
-1. Quick Understanding
-2. Option Elimination
-3. Fast Decision Path
-4. FINAL DECISION
-5. Error Risk
-```
-
-## What This Repository Does Not Ship
-
-This public release does not include:
-
-- paid course files
-- lecture PDFs
-- true-question PDFs
-- answer keys
-- answer explanations
-- OCR outputs
-- unredacted personal notes or note-app exports
-- private learning-state profiles
-- local filesystem paths
-
-Publicly available true questions may be analyzed locally when the user provides them, but this repository does not redistribute the original files.
-
-## Repository Layout
-
-```text
-assets/preview/
-examples/
-scripts/
-skills/xizong-study-review/
-  SKILL.md
-  agents/openai.yaml
-  references/
-  assets/templates/
-tests/regression/
-```
-
-Use `tests/regression/` as a behavior checklist before changing the skill. The tests protect the core boundaries: do not become an encyclopedia generator, do not force Decision Engine v1 without full options, do not fabricate sources, and do adapt output to the user's note/document platform.
-
-## Suggested First Prompt
-
-```markdown
-Use the xizong-study-review skill.
-
-Please review my 西综 output as a professional learning tutor:
-1. Judge my learning state.
-2. Identify only 1-2 main problems.
-3. Preserve my original wording.
-4. Insert Codex 核对 callouts under the relevant paragraphs.
-5. Add Learning Feedback.
-6. Give only 1-2 next tasks.
-```
-
-## Suggested Upload Prompt
-
-```markdown
-Use the xizong-study-review skill.
-
-I uploaded a 西综 lecture / note / exercise / true-question file.
-First identify:
-1. file type
-2. readability
-3. whether it contains answers or explanations
-4. whether it is safe for blind review
-5. whether it should be used for output review, wrong-question review, true-question structure analysis, or option decision
-
-Do not generate a question bank. Do not redistribute source content.
-```
-
-# 西综智能学习助教
+<p align="center">
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
+  <img src="https://img.shields.io/badge/version-v0.1.0--public--preview-orange?style=flat-square" />
+  <img src="https://img.shields.io/badge/Codex-Skill-8A2BE2?style=flat-square" />
+  <img src="https://img.shields.io/badge/Xizong-study--review-2ea44f?style=flat-square" />
+  <img src="https://img.shields.io/badge/status-public--preview-brightgreen?style=flat-square" />
+  <img src="https://img.shields.io/badge/privacy-public--safe-lightgrey?style=flat-square" />
+</p>
+
+## 📋 更新日志
+
+### 2026/6/20  v0.1.0-public-preview
+
+* 发布第一个 public preview 版本：`xizong-study-review` 正式作为公开 Codex Skill 发行。
+* 明确 Skill 定位：不是知识点总结器，也不是题库搬运工具，而是面向西综学习的专业学习助教。
+* 建立核心工作流：
+
+  * 学习输出审稿；
+  * 笔记 review block；
+  * Learning Feedback；
+  * 错题复盘；
+  * 学习状态判断；
+  * 题干到知识点的 mapping failure 识别；
+  * 完整选项决策场景下的 Decision Engine v1 触发边界。
+* 加入真实学习场景校准说明：Skill 的行为设计经过教材框架、课程讲义结构、知识点笔记、错题复盘样本和历年考试材料所呈现出的题目风格反复打磨，但公开版本不包含任何原始讲义、课本扫描件、真题 PDF、答案 key、解析、OCR 输出或个人学习记录。
+* 加入 public-safe 发行边界：
+
+  * 不分发付费课程资料；
+  * 不分发讲义 PDF；
+  * 不分发课本扫描件；
+  * 不分发真题 PDF；
+  * 不分发答案 key；
+  * 不分发答案解析；
+  * 不包含未脱敏个人笔记；
+  * 不包含个人学习状态记录；
+  * 不包含本地题库或私有路径。
+* 增加多平台笔记适配说明，覆盖 Obsidian、Markdown、Word、Notion、飞书、FlowUs、语雀、腾讯文档等常见学习写作环境。
+* 提供安装脚本：
+
+  * `scripts/install-skill.sh`
+  * `scripts/install-skill.bat`
+* 提供推荐初始提示词，方便用户安装后快速进入西综学习助教模式。
+* 增加示例 prompt、空白模板、fictional 示例和行为回归测试提示，用于帮助用户理解 Skill 的正确使用方式。
+* 增加 `PUBLIC_RELEASE_CHECKLIST.md` 和 public/private boundary 说明，降低公开发行时的资料泄露风险。
+* 设置版本语义：当前版本为 `0.1.0-public-preview`，表示已经可以公开试用，但仍处于持续校准和快速迭代阶段。
+
+## 介绍
 
 很多人学西综卡住，不是因为资料不够，而是因为“看懂了”到“能讲清楚”，再到“能做题选出来”之间断了一截。
 

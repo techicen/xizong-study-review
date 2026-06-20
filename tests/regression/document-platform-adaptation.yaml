@@ -1,0 +1,21 @@
+tests:
+  - test_id: feishu_table_output
+    input: |
+      Use the xizong-study-review skill.
+      My note app is Feishu Docs.
+      Review this paragraph and output a table I can paste into Feishu Docs.
+
+      支气管哮喘是气道慢性炎症，治疗上可以使用支气管扩张剂。
+    expected_behavior:
+      - Recognize Feishu Docs as a collaborative document platform.
+      - Use a compact review table or comment-style bullets.
+      - Preserve original paragraph.
+      - Avoid Obsidian-only callout syntax unless user asks for it.
+    failure_mode_to_avoid:
+      - Using only Obsidian callouts.
+      - Claiming direct editing of Feishu Docs without connector/browser permission.
+      - Rewriting the note without preserving original text.
+    pass_criteria:
+      - Output includes a table or comment-style review.
+      - Output mentions Feishu Docs or document-platform adaptation.
+      - Output does not claim direct synchronization unless tools are available.

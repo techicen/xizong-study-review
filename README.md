@@ -6,6 +6,62 @@ Skill folder: `skills/xizong-study-review`
 
 This repository is a public, sanitized release. It contains the learning workflow, prompt contracts, templates, and safety boundaries. It does not contain lecture PDFs, true-question PDFs, answer keys, explanations, OCR outputs, personal notes, or private learning records.
 
+![Learning loop](assets/preview/preview-learning-loop.svg)
+
+## Quick Start
+
+Clone the repository:
+
+```bash
+git clone https://github.com/techicen/xizong-study-review.git
+cd xizong-study-review
+```
+
+Install the skill:
+
+```bash
+bash scripts/install-skill.sh
+```
+
+On Windows:
+
+```bat
+scripts\install-skill.bat
+```
+
+Restart Codex, then try:
+
+```markdown
+Use the xizong-study-review skill.
+
+Please review my 西综 note as a professional learning tutor:
+1. Judge my learning state.
+2. Identify only 1-2 main problems.
+3. Preserve my original wording.
+4. Insert platform-adapted review blocks under relevant paragraphs.
+5. Add Learning Feedback.
+6. Give only 1-2 next tasks.
+```
+
+## See It In Action
+
+- `examples/01-copd-note-review.md` — note review with learning-state feedback.
+- `examples/02-feishu-doc-review-table.md` — Feishu/Lark Docs review table.
+- `examples/03-notion-flowus-review-block.md` — Notion/FlowUs portable block.
+- `examples/04-wrong-question-review.md` — wrong-question diagnosis.
+- `examples/05-decision-engine-sample.md` — fast option decision after understanding is stable.
+- `examples/06-sanitized-ob-style-inline-audit.md` — sanitized Obsidian-style inline audit inspired by a private workflow.
+
+Preview assets:
+
+![Document apps](assets/preview/preview-document-apps.svg)
+
+![Error diagnosis](assets/preview/preview-error-diagnosis.svg)
+
+Sanitized real-workflow style:
+
+![Obsidian-style inline audit](assets/preview/preview-ob-style-inline-audit.svg)
+
 ## Why This Skill Exists
 
 Most study tools help learners collect more information. This skill is designed for a harder question:
@@ -117,13 +173,15 @@ This example shows the intended public workflow: install the skill, write a prom
 
 ### 1. Install The Skill
 
-Clone the repository:
+The fastest path:
 
 ```bash
 git clone https://github.com/techicen/xizong-study-review.git
+cd xizong-study-review
+bash scripts/install-skill.sh
 ```
 
-Copy the skill folder into your Codex skills directory:
+Manual install also works:
 
 ```bash
 cp -R xizong-study-review/skills/xizong-study-review ~/.codex/skills/
@@ -288,12 +346,18 @@ Publicly available true questions may be analyzed locally when the user provides
 ## Repository Layout
 
 ```text
+assets/preview/
+examples/
+scripts/
 skills/xizong-study-review/
   SKILL.md
   agents/openai.yaml
   references/
   assets/templates/
+tests/regression/
 ```
+
+Use `tests/regression/` as a behavior checklist before changing the skill. The tests protect the core boundaries: do not become an encyclopedia generator, do not force Decision Engine v1 without full options, do not fabricate sources, and do adapt output to the user's note/document platform.
 
 ## Suggested First Prompt
 
@@ -332,6 +396,60 @@ Do not generate a question bank. Do not redistribute source content.
 公开版名称是 `Xizong Exam Intelligence Tutor`，安装目录仍然是 `skills/xizong-study-review`。这样既保留稳定的 skill 触发名，也让公开展示更清晰。
 
 这个仓库是公开、安全、脱敏版本。它只包含学习工作流、提示词合同、模板和边界规则，不包含讲义 PDF、真题 PDF、答案解析、OCR 文本、个人笔记或私人学习记录。
+
+![学习闭环](assets/preview/preview-learning-loop.svg)
+
+## 快速开始
+
+克隆仓库：
+
+```bash
+git clone https://github.com/techicen/xizong-study-review.git
+cd xizong-study-review
+```
+
+安装 skill：
+
+```bash
+bash scripts/install-skill.sh
+```
+
+Windows 用户：
+
+```bat
+scripts\install-skill.bat
+```
+
+重启 Codex 后，可以直接试：
+
+```markdown
+请使用 xizong-study-review skill。
+
+请按西综专业学习助教模式审稿我的笔记：
+1. 判断当前学习状态；
+2. 找出 1-2 个主要问题；
+3. 保留原文，不要重写全文；
+4. 按我的笔记/文档软件输出适配格式；
+5. 加上 Learning Feedback；
+6. 最后只给 1-2 个下一步任务。
+```
+
+## 示例和预览
+
+- `examples/01-copd-note-review.md`：笔记审稿与学习状态反馈。
+- `examples/02-feishu-doc-review-table.md`：飞书文档审稿表格。
+- `examples/03-notion-flowus-review-block.md`：Notion / FlowUs 通用块。
+- `examples/04-wrong-question-review.md`：错题错因诊断。
+- `examples/05-decision-engine-sample.md`：理解稳定后的选项决策。
+- `examples/06-sanitized-ob-style-inline-audit.md`：真实工作流风格的脱敏 Obsidian 原文批注案例。
+
+![文档软件适配](assets/preview/preview-document-apps.svg)
+
+![错因诊断](assets/preview/preview-error-diagnosis.svg)
+
+真实工作流风格脱敏预览：
+
+![Obsidian 原文批注风格](assets/preview/preview-ob-style-inline-audit.svg)
 
 ## 为什么它值得安装
 
@@ -449,13 +567,15 @@ Obsidian 只是因为支持 Markdown callout，所以很适合展示 `Codex 核�
 
 ### 1. 安装 skill
 
-克隆仓库：
+最快安装：
 
 ```bash
 git clone https://github.com/techicen/xizong-study-review.git
+cd xizong-study-review
+bash scripts/install-skill.sh
 ```
 
-复制 skill 到 Codex skills 目录：
+也可以手动复制：
 
 ```bash
 cp -R xizong-study-review/skills/xizong-study-review ~/.codex/skills/
@@ -637,12 +757,18 @@ skill 会根据学习反馈选择下一步：
 ## 仓库结构
 
 ```text
+assets/preview/
+examples/
+scripts/
 skills/xizong-study-review/
   SKILL.md
   agents/openai.yaml
   references/
   assets/templates/
+tests/regression/
 ```
+
+`tests/regression/` 是行为回归测试集，用来防止 skill 后续改着改着变成百科总结器、押题器，或者忘记平台适配、来源边界和 v1 触发条件。
 
 ## 推荐初始提示词
 

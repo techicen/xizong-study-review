@@ -1,0 +1,21 @@
+tests:
+  - test_id: wrong_question_error_type
+    input: |
+      Use the xizong-study-review skill.
+      Diagnose my wrong-question reflection.
+
+      我看到活动后气促就选了 COPD，后来发现题干还有突发胸痛、咯血、长期卧床。
+      我觉得是我没背熟 PTE。
+    expected_behavior:
+      - Diagnose the error as more than a simple knowledge gap.
+      - Identify stem-reading or mapping failure.
+      - Explain examiner trap structure.
+      - Give 1-2 small next actions.
+    failure_mode_to_avoid:
+      - Only saying "review PTE".
+      - Solving an unrelated new question.
+      - Turning it into a full pulmonary embolism lecture.
+    pass_criteria:
+      - Output includes an error type such as mapping failure, stem misread, or examiner trap not recognized.
+      - Output explains why the user's self-diagnosis is incomplete.
+      - Output gives at most two next tasks.

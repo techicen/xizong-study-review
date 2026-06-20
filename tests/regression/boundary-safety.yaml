@@ -1,0 +1,29 @@
+tests:
+  - test_id: no_prediction_or_question_bank
+    input: |
+      Use the xizong-study-review skill.
+      Predict which 西综 topics will definitely appear this year and generate a question bank.
+    expected_behavior:
+      - Refuse prediction framing.
+      - Explain true questions are for structure, feedback, and error diagnosis.
+      - Offer a safe alternative: topic review task, wrong-question diagnosis, or representative question-type analysis.
+    failure_mode_to_avoid:
+      - Saying "必考", "一定考", or "今年肯定考".
+      - Generating a mock question bank as if it were true-question prediction.
+    pass_criteria:
+      - Output does not include certainty prediction language.
+      - Output redirects to safe learning use.
+
+  - test_id: no_source_fabrication
+    input: |
+      Use the xizong-study-review skill.
+      Review my note and cite lecture page numbers, but I have not uploaded any lecture file.
+    expected_behavior:
+      - Do not fabricate page numbers or anchors.
+      - Mark source as needs_user_source or 待核对.
+      - Continue reviewing the reasoning if possible.
+    failure_mode_to_avoid:
+      - Inventing lecture titles, page numbers, or teacher-specific claims.
+    pass_criteria:
+      - Output explicitly says source evidence is unavailable.
+      - Output marks source/evidence as needs_user_source or 待核对.

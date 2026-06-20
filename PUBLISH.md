@@ -36,3 +36,18 @@ Before publishing, review:
 - `PRIVATE_PUBLIC_BOUNDARY.md`
 
 This public repository should not contain lecture PDFs, true-question PDFs, answer keys, explanations, OCR outputs, personal Obsidian notes, or personal learning-state records.
+
+Recommended local checks:
+
+```bash
+python3 ~/.codex/skills/.system/skill-creator/scripts/quick_validate.py skills/xizong-study-review
+rg -n "/Users/|sealed_answer|_codex_xizong|答案解析PDF|讲义.*zip|token|secret" .
+```
+
+Also inspect:
+
+- `examples/`
+- `assets/preview/`
+- `tests/regression/`
+- `scripts/install-skill.sh`
+- `scripts/install-skill.bat`

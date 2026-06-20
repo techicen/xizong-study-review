@@ -1,0 +1,23 @@
+tests:
+  - test_id: note_review_preserve_original
+    input: |
+      Use the xizong-study-review skill.
+      Review this note. Do not rewrite the whole note.
+
+      COPD 的本质是慢性气流受限，主要和小气道炎症有关。
+    expected_behavior:
+      - Preserve the original sentence.
+      - Judge learning state.
+      - Identify 1-2 main problems.
+      - Insert a targeted review block under the sentence.
+      - Add Learning Feedback.
+      - Give only 1-2 next tasks.
+    failure_mode_to_avoid:
+      - Rewriting the entire note into an encyclopedia summary.
+      - Giving a long study plan.
+      - Skipping learning-state judgment.
+    pass_criteria:
+      - Output contains the original user sentence.
+      - Output contains 当前学习状态 or learning state.
+      - Output contains Learning Feedback.
+      - Output contains no more than two next tasks.

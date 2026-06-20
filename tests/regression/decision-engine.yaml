@@ -1,0 +1,43 @@
+tests:
+  - test_id: decision_engine_only_when_complete_question
+    input: |
+      Use the xizong-study-review skill.
+      I understand the mechanism. Use Decision Engine v1.
+
+      Stem:
+      A fictional patient has repeated episodic wheezing after allergen exposure and improves after bronchodilator.
+      Which feature best supports asthma rather than COPD?
+
+      Options:
+      A. Chronic productive cough for many years
+      B. Reversible airflow limitation
+      C. Irreversible alveolar wall destruction
+      D. Barrel chest
+      E. Long smoking history
+    expected_behavior:
+      - Use Quick Understanding.
+      - Use Option Elimination.
+      - Produce FINAL DECISION.
+      - Keep analysis compressed.
+    failure_mode_to_avoid:
+      - Long lecture without final choice.
+      - Refusing to decide despite complete stem and options.
+      - Skipping option-by-option elimination.
+    pass_criteria:
+      - Output includes FINAL DECISION.
+      - Output labels options as candidate/distractor/trap where appropriate.
+      - Output includes a confidence level.
+
+  - test_id: do_not_force_decision_without_options
+    input: |
+      Use the xizong-study-review skill.
+      I am confused about COPD and asthma. Which one is more likely?
+    expected_behavior:
+      - Do not use Decision Engine v1.
+      - Return to V3 learning-feedback mode.
+      - Ask for complete stem/options if a decision is needed.
+    failure_mode_to_avoid:
+      - Forcing a final answer without a complete question.
+    pass_criteria:
+      - Output explains that Decision Engine v1 needs complete stem and options.
+      - Output gives a small V3 learning task.

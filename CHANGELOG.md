@@ -1,0 +1,58 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+This project uses semantic versioning where possible.
+Current public version: `0.1.0-public-preview`.
+
+---
+
+## [0.1.0-public-preview] - 2026-06-20
+
+### Added
+
+* First public preview release of `xizong-study-review`.
+* Added the core Codex Skill package for Xizong exam-oriented learning review.
+* Added professional learning-tutor workflow for 西综 study output review.
+* Added Learning Feedback mode for judging the learner's current state.
+* Added note-review workflow with review block output.
+* Added wrong-question review workflow for identifying weak points and mapping failures.
+* Added Decision Engine v1 boundary for complete option-decision scenarios.
+* Added support notes for Obsidian, Markdown, Word, Notion, Feishu/Lark Docs, FlowUs, Yuque, Tencent Docs, and other writing environments.
+* Added recommended initial prompts for quick onboarding.
+* Added fictional examples and blank templates.
+* Added behavior-regression prompts to prevent the Skill from drifting into a generic summarizer or unauthorized question-bank tool.
+* Added public/private boundary documentation.
+* Added public release safety checklist.
+* Added install scripts for macOS/Linux and Windows.
+
+### Calibrated
+
+* Calibrated the Skill behavior against real Xizong learning scenarios, including textbook-style frameworks, lecture-note structures, knowledge-output samples, wrong-question review patterns, and exam-material task patterns.
+* Refined boundaries for when the Skill should explain, review, diagnose, trigger option-decision mode, or stop over-inference.
+* Improved alignment toward exam-oriented reasoning instead of generic medical summarization.
+
+### Safety
+
+* Public release does not include paid course materials.
+* Public release does not include lecture PDFs.
+* Public release does not include textbook scans.
+* Public release does not include true-question PDFs.
+* Public release does not include answer keys.
+* Public release does not include answer explanations.
+* Public release does not include OCR outputs.
+* Public release does not include personal notes.
+* Public release does not include personal learning-state records.
+* Public release does not include local question databases, private paths, or private configuration files.
+
+### Status
+
+* This is a public preview release.
+* The Skill is usable for real note review, wrong-question diagnosis, learning-state judgment, and next-step task generation.
+* Continued calibration is still needed for:
+
+  * learning-state judgment stability;
+  * mapping-failure diagnosis;
+  * long-term review consistency;
+  * platform-specific output adaptation;
+  * balancing exam-oriented language and learning-support language.

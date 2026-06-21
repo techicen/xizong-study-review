@@ -1,6 +1,6 @@
 ---
 name: xizong-study-review
-description: "Review and improve Chinese postgraduate medical exam (考研西综/306) study outputs, user-uploaded lectures/notes/exercises, Obsidian/Notion/FlowUs/Feishu/Lark/Tencent Docs/Yuque/WPS/Word/Google Docs/Markdown drafts, wrong-question reviews, physiology-pathology-clinical callbacks, and true-question reasoning workflows. Use when Codex should act as a professional learning tutor rather than a question generator: identify uploaded materials and document platform, help the learner output in their own words, judge learning state, diagnose mechanism or mapping failures, preserve the user's original note, insert platform-adapted review blocks/tables/comments, recommend small next tasks, explain V3 as learning-feedback mode and Decision Engine v1 as option-decision mode, and only assist option elimination when a complete question stem and options are provided."
+description: "Review and improve Chinese postgraduate medical exam (考研西综/306) study outputs, user-uploaded lectures/notes/exercises, Obsidian/Notion/FlowUs/Feishu/Lark/Tencent Docs/Yuque/WorkBuddy/WPS/Word/Google Docs/Markdown drafts, wrong-question reviews, physiology-pathology-clinical callbacks, and true-question reasoning workflows. Use when Codex should act as a professional learning tutor rather than a question generator: identify uploaded materials and document platform or WorkBuddy workspace context, help the learner output in their own words, judge learning state, diagnose mechanism or mapping failures, preserve the user's original note, insert platform-adapted review blocks/tables/comments, recommend small next tasks, explain V3 as learning-feedback mode and Decision Engine v1 as option-decision mode, and only assist option elimination when a complete question stem and options are provided."
 ---
 
 # Xizong Exam Intelligence Tutor
@@ -83,7 +83,7 @@ For complete option-decision questions:
 
 ## Note Review Across Platforms
 
-When reviewing notes from Obsidian, Notion, FlowUs, Feishu/Lark Docs, Tencent Docs, Yuque, WPS, Word, Google Docs, Markdown, or plain pasted text, preserve the user's original text. Do not rewrite the full note. Insert targeted review blocks directly below the relevant original passages.
+When reviewing notes from Obsidian, Notion, FlowUs, Feishu/Lark Docs, Tencent Docs, Yuque, WorkBuddy, WPS, Word, Google Docs, Markdown, or plain pasted text, preserve the user's original text. Do not rewrite the full note. Insert targeted review blocks directly below the relevant original passages.
 
 First identify the document platform from the user's statement, uploaded/exported file, screenshot, or surrounding context. If unclear, default to a portable Markdown/text review block.
 
@@ -93,6 +93,7 @@ Choose the output template by platform:
 - Notion or FlowUs: callout/toggle/quote-style blocks.
 - Feishu/Lark Docs, Tencent Docs, Word, WPS, or Google Docs: compact review tables or comment-style bullets.
 - Yuque: paragraph quote plus review block.
+- WorkBuddy: portable Markdown `Codex Review` blocks plus a short `WorkBuddy Handoff` checklist when the user wants a task-oriented workspace summary.
 - Markdown/plain text: portable `Codex Review` block.
 
 Distinguish collaboration levels:
@@ -100,6 +101,8 @@ Distinguish collaboration levels:
 - Paste-ready collaboration: output platform-adapted text for the user to paste.
 - Export-aware collaboration: preserve structure when the user uploads Markdown, DOCX, HTML, CSV, OCR text, or exported text.
 - Direct document collaboration: only claim direct editing, exact insertion, or comments when a browser, connector, API, or editable document file is available and the user permits that action.
+
+For WorkBuddy, assume paste-ready collaboration by default. If WorkBuddy exposes uploaded files, selected text, browser context, or document connectors in the current environment, use those surfaces normally; otherwise, provide a clean Markdown response that can be pasted back into the workspace. Do not claim WorkBuddy synchronization, document mutation, or comment insertion unless such a tool is actually available.
 
 Read `references/obsidian-review-loop.md` when the user asks to review any study note, adapt output to a document platform, maintain a learning-state profile, or update review ledgers.
 

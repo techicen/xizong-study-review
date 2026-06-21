@@ -19,3 +19,25 @@ tests:
       - Output includes a table or comment-style review.
       - Output mentions Feishu Docs or document-platform adaptation.
       - Output does not claim direct synchronization unless tools are available.
+
+  - test_id: workbuddy_paste_ready_output
+    input: |
+      Use the xizong-study-review skill in WorkBuddy.
+      Review this paragraph and give me something I can paste back into my WorkBuddy task.
+      No direct document connector is available.
+
+      肺气肿就是肺泡被破坏，所以 COPD 病人呼气困难。
+    expected_behavior:
+      - Recognize WorkBuddy as a workspace or chat context, not as proof of direct document-editing capability.
+      - Preserve the original paragraph.
+      - Use portable Markdown Codex Review blocks rather than Obsidian-only callouts.
+      - Optionally add a short WorkBuddy Handoff checklist with 1-2 next tasks.
+    failure_mode_to_avoid:
+      - Claiming it edited or synchronized a WorkBuddy document.
+      - Using only Obsidian callout syntax.
+      - Rewriting the note into a full COPD summary.
+      - Entering Decision Engine v1 without complete stem and options.
+    pass_criteria:
+      - Output includes a portable Codex Review block or equivalent Markdown block.
+      - Output says direct editing requires an available connector/file/browser surface if mentioned at all.
+      - Output gives no more than 1-2 next tasks.

@@ -3,10 +3,10 @@
 ## Prompt
 
 ```markdown
-Use the xizong-study-review skill in WorkBuddy.
+Use the xizong-study-review workflow in a WorkBuddy task.
 
 Please review this note and return portable Markdown I can paste back into my WorkBuddy task.
-No direct document connector is available.
+Use `skills/xizong-study-review/` as the core Skill behavior. No direct document connector is available in this paste-only example.
 ```
 
 ## User Note

@@ -22,6 +22,7 @@ Current public version: `0.1.0-public-preview`.
 * Updated the skill card metadata to mention WorkBuddy support.
 * Updated the default skill prompt to explicitly invoke `$xizong-study-review`.
 * Clarified that direct document editing or synchronization requires an available connector, browser, or editable file surface.
+* Clarified that the same `skills/xizong-study-review/SKILL.md` package is intended for both Codex and WorkBuddy use.
 
 ## [0.1.0-public-preview] - 2026-06-20
 

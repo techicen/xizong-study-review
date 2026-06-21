@@ -11,11 +11,11 @@ Current public version: `0.1.0-public-preview`.
 
 ### Added
 
-* Added Tencent WorkBuddy software support to the public `xizong-study-review` skill trigger description and platform-adaptation contract.
-* Added WorkBuddy installation and quick-start prompts in README, clarifying that WorkBuddy can use the same `SKILL.md` package.
+* Added Tencent WorkBuddy software support and positioned the public package as a Codex + WorkBuddy dual-surface Skill.
+* Added WorkBuddy installation and quick-start prompts in README, clarifying that WorkBuddy can install or upload the same `skills/xizong-study-review/SKILL.md` package.
 * Added concrete WorkBuddy onboarding content for traffic-stage readers: target users, a 3-minute trial flow, and common in-app usage scenarios.
 * Added `examples/07-workbuddy-review.md` with a paste-ready Markdown review and short `WorkBuddy Handoff` checklist.
-* Added a WorkBuddy regression fixture to protect paste-ready behavior and direct-editing boundaries.
+* Added a WorkBuddy regression fixture to protect paste-ready behavior, direct-editing boundaries, and the distinction between WorkBuddy software and a generic workspace label.
 
 ### Changed
 

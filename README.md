@@ -3,6 +3,7 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/version-v0.1.0--public--preview-orange?style=flat-square" />
   <img src="https://img.shields.io/badge/Codex-Skill-8A2BE2?style=flat-square" />
+  <img src="https://img.shields.io/badge/WorkBuddy-Skill-00A870?style=flat-square" />
   <img src="https://img.shields.io/badge/Xizong-study--review-2ea44f?style=flat-square" />
   <img src="https://img.shields.io/badge/status-public--preview-brightgreen?style=flat-square" />
   <img src="https://img.shields.io/badge/privacy-public--safe-lightgrey?style=flat-square" />
@@ -12,12 +13,13 @@
 
 完整更新日志见 [`CHANGELOG.md`](CHANGELOG.md)。
 
-### 2026/6/21  WorkBuddy support
+### 2026/6/21  支持腾讯 WorkBuddy 软件
 
-* 增加腾讯 WorkBuddy 软件支持：同一个 `skills/xizong-study-review/SKILL.md` 可同时作为 Codex Skill 和 WorkBuddy Skill 使用。
-* 更新 WorkBuddy 安装和试用说明：WorkBuddy 用户可以直接安装/上传 `skills/xizong-study-review/`，也可以把提示词放进 WorkBuddy 任务、项目指令或 IM 助理消息中快速试用。
+* 正式把公开版定位为 **Codex + WorkBuddy 双端 Skill**：同一个 `skills/xizong-study-review/SKILL.md` 可同时作为 Codex Skill 和腾讯 WorkBuddy Skill 使用。
+* 更新 WorkBuddy 安装说明：WorkBuddy 用户直接安装或上传 `skills/xizong-study-review/`，不需要维护另一套 WorkBuddy 专用包。
+* 更新 WorkBuddy 试用说明：可以把提示词放进 WorkBuddy 软件里的任务、项目指令或 IM 助理消息中快速试用。
 * 增加 `examples/07-workbuddy-review.md`，展示 WorkBuddy 中可复制的审稿输出和 `WorkBuddy Handoff` 清单。
-* 增加 WorkBuddy 回归测试，防止误称直接同步/编辑文档，或在没有完整题干选项时误入 Decision Engine v1。
+* 增加 WorkBuddy 回归测试，防止把 WorkBuddy 误写成普通工作区，也防止在没有文件/连接器权限时声称能直接同步或编辑文档。
 
 ### 2026/6/20  v0.1.0-public-preview
 
@@ -57,11 +59,15 @@
 ## 介绍
 很多人学西综卡住，不是因为资料不够，而是因为“看懂了”到“能讲清楚”，再到“能做题选出来”之间断了一截。
 
-`Xizong Exam Intelligence Tutor` 就是为这段断层做的公开版 Skill，可安装到 Codex，也可安装到腾讯 WorkBuddy。它不是题库，不是押题工具，也不是一键生成百科总结的 AI。它更像一个专业西综学习助教：看你的原文输出，判断你现在到底懂到哪一步，找出机制链断点和错因，再给你一个很小但能推进学习的下一步。
+`Xizong Exam Intelligence Tutor` 就是为这段断层做的公开版 Skill。它现在明确支持两类 AI Agent 软件：**OpenAI Codex** 和 **腾讯 WorkBuddy**。同一个 `SKILL.md`，既可以作为 Codex Skill 安装，也可以作为 WorkBuddy Skill 安装或上传。
+
+它不是题库，不是押题工具，也不是一键生成百科总结的 AI。它更像一个专业西综学习助教：看你的原文输出，判断你现在到底懂到哪一步，找出机制链断点和错因，再给你一个很小但能推进学习的下一步。
 
 它可以做主动输出审稿、笔记原文批注、错题错因诊断、生理-病理-内科 callback、真题结构理解，以及在完整题干和选项出现时的考试决策辅助。
 
 公开版名称是 `Xizong Exam Intelligence Tutor`，安装目录仍然是 `skills/xizong-study-review`。核心文件是 `SKILL.md`，同一份 Skill 兼容 Codex 和 WorkBuddy，既保留稳定的 skill 触发名，也让公开展示更清晰。
+
+对 WorkBuddy 用户来说，WorkBuddy 指的是腾讯 CodeBuddy 的 AI Agent 软件，而不是一个普通“工作区”标签。这个仓库的 WorkBuddy 支持不是另写一份提示词，而是让同一份西综学习审稿 Skill 可以在 WorkBuddy 软件中复用。
 
 这个仓库是公开、安全、脱敏版本。它只包含学习工作流、提示词合同、模板、预览图和边界规则，不包含讲义 PDF、真题 PDF、答案解析、OCR 文本、未脱敏个人笔记或私人学习记录。仓库中保留了一张已授权、已遮挡讲义来源的真实工作流截图，用来展示实际审稿效果。
 

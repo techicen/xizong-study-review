@@ -119,6 +119,12 @@ scripts\install-skill.bat
 
 WorkBuddy 支持不需要单独的 skill 目录：安装同一个 `xizong-study-review` skill，然后在能调用本地 Codex skills 的 WorkBuddy 工作区或对话里使用。
 
+它特别适合三类人：
+
+* 已经在 WorkBuddy 里管理学习任务，希望把“今天学了什么、哪里没懂、下一步干什么”整理成可执行清单的人。
+* 用 Obsidian、飞书、Notion、Word 等工具写笔记，但想先在 WorkBuddy 里快速过一遍质量的人。
+* 错题复盘总是写成“知识点不会”，想让 AI 帮忙拆成机制断裂、映射失败、干扰项误判或临床优先级错误的人。
+
 可以这样问：
 
 ```markdown
@@ -130,6 +136,35 @@ WorkBuddy 支持不需要单独的 skill 目录：安装同一个 `xizong-study-
 ```
 
 没有直接连接器时，skill 默认给复制粘贴级 Markdown；如果 WorkBuddy 提供了选中文本、上传文件或可编辑文档上下文，Codex 可以读取这些上下文，但仍要保留学习者原文。
+
+#### 3 分钟试用方式
+
+1. 从你今天的笔记里复制 3-8 行，不要复制整章。
+2. 在 WorkBuddy 里粘贴这段笔记，并说明“这是我的原文，不要重写全文”。
+3. 要求它只输出：学习状态、1-2 个主要问题、一个 `Codex Review` block、一个 `WorkBuddy Handoff` 清单。
+
+最小可用提示词：
+
+```markdown
+请在 WorkBuddy 中使用 xizong-study-review skill。
+
+下面是我的西综原文输出。请不要重写全文，只做审稿：
+1. 判断我是 beginner / unstable / consolidating / exam-ready / confused-zone 中哪一类；
+2. 只找 1-2 个主要问题；
+3. 在原文下方给一个可复制的 Codex Review block；
+4. 最后给 WorkBuddy Handoff：今天下一步只做 1-2 件事。
+
+我的原文：
+```
+
+#### WorkBuddy 里的典型场景
+
+| 场景 | 你可以粘贴什么 | 它应该产出什么 |
+| --- | --- | --- |
+| 今日学习复盘 | 一段刚写完的疾病机制笔记 | 学习状态、机制断点、下一步小任务 |
+| 错题复盘 | 题干摘要、你的错误选项、你当时的理由 | 错因分类、干扰项识别、重做前该补的一个点 |
+| 讲义后主动输出 | 不看讲义写出的 5-10 行解释 | 哪些是背结论、哪些能支持做题、是否需要 callback |
+| WorkBuddy 任务交接 | 今天学过的主题和没完成的问题 | `WorkBuddy Handoff` 清单，方便明天继续 |
 
 ## 示例和预览
 

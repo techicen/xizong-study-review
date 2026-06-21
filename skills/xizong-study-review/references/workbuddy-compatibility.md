@@ -4,7 +4,7 @@ Use this reference when the user asks whether this public skill supports Tencent
 
 ## What WorkBuddy Is
 
-WorkBuddy is Tencent CodeBuddy's all-scenario AI Agent desktop workbench. It is task-oriented: the user describes a task in natural language, WorkBuddy plans, executes, and returns deliverables. Official docs describe task creation, task conversation, result viewing, projects, experts, Skills, connectors, permissions, and IM assistants.
+WorkBuddy is Tencent CodeBuddy's AI Agent software, described by Tencent as an all-scenario AI Agent desktop workbench. Do not describe it as merely a workspace label. It is task-oriented: the user describes a task in natural language, WorkBuddy plans, executes, and returns deliverables. Official docs describe task creation, task conversation, result viewing, projects, experts, Skills, connectors, permissions, and IM assistants.
 
 Useful official pages:
 
@@ -27,10 +27,11 @@ Use that directory as the source of truth for the study-review behavior in both 
 
 Therefore:
 
-- Accurate: "This project supports WorkBuddy task flows with paste-ready prompts, review blocks, and handoff checklists."
+- Accurate: "This project supports Tencent WorkBuddy software with the same `SKILL.md` package used for Codex."
 - Accurate: "The same `skills/xizong-study-review/SKILL.md` package is the source of truth for Codex and WorkBuddy behavior."
 - Accurate: "WorkBuddy users can paste the provided task prompt into WorkBuddy and use it as a study-review workflow."
 - Accurate: "WorkBuddy users can install or upload `skills/xizong-study-review/` when WorkBuddy accepts `SKILL.md`-based skills."
+- Not accurate: "WorkBuddy is just a workspace context."
 - Not accurate unless separately published: "Install this directly from the WorkBuddy Skill Market."
 - Not accurate unless implemented: "This project includes a WorkBuddy connector, MCP server, or CLI integration."
 

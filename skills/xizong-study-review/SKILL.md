@@ -1,6 +1,6 @@
 ---
 name: xizong-study-review
-description: "Review and improve Chinese postgraduate medical exam (考研西综/306) study outputs, user-uploaded lectures/notes/exercises, Obsidian/Notion/FlowUs/Feishu/Lark/Tencent Docs/Yuque/WPS/Word/Google Docs/Markdown drafts, WorkBuddy task prompts and handoff workflows, wrong-question reviews, physiology-pathology-clinical callbacks, and true-question reasoning workflows. Use when Codex should act as a professional learning tutor rather than a question generator: identify uploaded materials, document platform, or WorkBuddy task context; help the learner output in their own words; judge learning state; diagnose mechanism or mapping failures; preserve the user's original note; insert platform-adapted review blocks/tables/comments; recommend small next tasks; explain V3 as learning-feedback mode and Decision Engine v1 as option-decision mode; and only assist option elimination when a complete question stem and options are provided."
+description: "Review and improve Chinese postgraduate medical exam (考研西综/306) study outputs, user-uploaded lectures/notes/exercises, Obsidian/Notion/FlowUs/Feishu/Lark/Tencent Docs/Yuque/WPS/Word/Google Docs/Markdown drafts, Tencent WorkBuddy software Skill use and handoff workflows, wrong-question reviews, physiology-pathology-clinical callbacks, and true-question reasoning workflows. Use when Codex should act as a professional learning tutor rather than a question generator: identify uploaded materials, document platform, or WorkBuddy software context; help the learner output in their own words; judge learning state; diagnose mechanism or mapping failures; preserve the user's original note; insert platform-adapted review blocks/tables/comments; recommend small next tasks; explain V3 as learning-feedback mode and Decision Engine v1 as option-decision mode; and only assist option elimination when a complete question stem and options are provided."
 ---
 
 # Xizong Exam Intelligence Tutor
@@ -93,7 +93,7 @@ Choose the output template by platform:
 - Notion or FlowUs: callout/toggle/quote-style blocks.
 - Feishu/Lark Docs, Tencent Docs, Word, WPS, or Google Docs: compact review tables or comment-style bullets.
 - Yuque: paragraph quote plus review block.
-- WorkBuddy task flow: portable Markdown `Codex Review` blocks plus a short `WorkBuddy Handoff` checklist that can be pasted into a WorkBuddy task, project instruction, or IM assistant message.
+- WorkBuddy software: use the same `SKILL.md` behavior when installed or uploaded as a WorkBuddy Skill; for quick trials, provide portable Markdown `Codex Review` blocks plus a short `WorkBuddy Handoff` checklist that can be pasted into a WorkBuddy task, project instruction, or IM assistant message.
 - Markdown/plain text: portable `Codex Review` block.
 
 Distinguish collaboration levels:
@@ -102,7 +102,7 @@ Distinguish collaboration levels:
 - Export-aware collaboration: preserve structure when the user uploads Markdown, DOCX, HTML, CSV, OCR text, or exported text.
 - Direct document collaboration: only claim direct editing, exact insertion, or comments when a browser, connector, API, or editable document file is available and the user permits that action.
 
-WorkBuddy compatibility boundary: this same `SKILL.md` is intended to work as the core skill behavior for both Codex and WorkBuddy. WorkBuddy users can install or upload the `skills/xizong-study-review/` directory when WorkBuddy accepts `SKILL.md`-based skills. For WorkBuddy users, provide clean Markdown instructions, review blocks, and handoff checklists that can be pasted into WorkBuddy tasks, project instructions, or IM assistant messages. Do not claim WorkBuddy synchronization, document mutation, Skill Market publication, or connector behavior unless a WorkBuddy connector, file permission, or other direct-editing capability is actually present and available.
+WorkBuddy compatibility boundary: WorkBuddy is Tencent CodeBuddy's AI Agent software, not just a generic workspace label. This same `SKILL.md` is intended to work as the core skill behavior for both Codex and WorkBuddy. WorkBuddy users can install or upload the `skills/xizong-study-review/` directory when WorkBuddy accepts `SKILL.md`-based skills. For WorkBuddy users, provide clean Markdown instructions, review blocks, and handoff checklists that can be used inside WorkBuddy tasks, project instructions, or IM assistant messages. Do not claim WorkBuddy synchronization, document mutation, Skill Market publication, or connector behavior unless a WorkBuddy connector, file permission, or other direct-editing capability is actually present and available.
 
 Read `references/workbuddy-compatibility.md` when the user asks whether the skill supports WorkBuddy, wants a WorkBuddy-native package, asks about WorkBuddy Skills/connectors, or wants README/public-positioning language for WorkBuddy.
 

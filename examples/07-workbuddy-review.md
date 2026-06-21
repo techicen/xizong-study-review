@@ -3,7 +3,7 @@
 ## Prompt
 
 ```markdown
-Use the xizong-study-review workflow in a WorkBuddy task.
+Use the xizong-study-review Skill inside Tencent WorkBuddy.
 
 Please review this note and return portable Markdown I can paste back into my WorkBuddy task.
 Use `skills/xizong-study-review/` as the core Skill behavior. No direct document connector is available in this paste-only example.

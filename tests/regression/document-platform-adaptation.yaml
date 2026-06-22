@@ -22,13 +22,15 @@ tests:
 
   - test_id: workbuddy_paste_ready_output
     input: |
-      Use the xizong-study-review skill in WorkBuddy.
+      Use the xizong-study-review Skill inside Tencent WorkBuddy.
       Review this paragraph and give me something I can paste back into my WorkBuddy task.
-      No direct document connector is available.
+      Use skills/xizong-study-review/ as the core Skill behavior. No direct document connector is available in this paste-only task.
 
       肺气肿就是肺泡被破坏，所以 COPD 病人呼气困难。
     expected_behavior:
-      - Recognize WorkBuddy as a workspace or chat context, not as proof of direct document-editing capability.
+      - Recognize WorkBuddy as Tencent's AI Agent software, not merely as a workspace label.
+      - Recognize that using WorkBuddy is not proof of direct document-editing capability.
+      - Recognize that skills/xizong-study-review/ is the core Skill behavior for Codex and WorkBuddy-style use.
       - Preserve the original paragraph.
       - Use portable Markdown Codex Review blocks rather than Obsidian-only callouts.
       - Optionally add a short WorkBuddy Handoff checklist with 1-2 next tasks.
@@ -40,4 +42,5 @@ tests:
     pass_criteria:
       - Output includes a portable Codex Review block or equivalent Markdown block.
       - Output says direct editing requires an available connector/file/browser surface if mentioned at all.
+      - Output may mention WorkBuddy Skill use, but does not claim Skill Market publication or connector support.
       - Output gives no more than 1-2 next tasks.

@@ -3,6 +3,7 @@
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" />
   <img src="https://img.shields.io/badge/version-v0.1.0--public--preview-orange?style=flat-square" />
   <img src="https://img.shields.io/badge/Codex-Skill-8A2BE2?style=flat-square" />
+  <img src="https://img.shields.io/badge/WorkBuddy-Skill-00A870?style=flat-square" />
   <img src="https://img.shields.io/badge/Xizong-study--review-2ea44f?style=flat-square" />
   <img src="https://img.shields.io/badge/status-public--preview-brightgreen?style=flat-square" />
   <img src="https://img.shields.io/badge/privacy-public--safe-lightgrey?style=flat-square" />
@@ -12,12 +13,13 @@
 
 完整更新日志见 [`CHANGELOG.md`](CHANGELOG.md)。
 
-### 2026/6/21  WorkBuddy support
+### 2026/6/22  支持腾讯 WorkBuddy 软件
 
-* 增加 WorkBuddy 工作区支持：Skill 触发描述、平台识别和审稿输出合同都已覆盖 WorkBuddy。
-* 增加 WorkBuddy 使用提示词，默认输出可复制回任务或文档的 Markdown review block。
-* 增加 `examples/07-workbuddy-review.md`，展示 WorkBuddy 可粘贴审稿和 `WorkBuddy Handoff` 清单。
-* 增加 WorkBuddy 回归测试，防止误称直接同步/编辑文档，或在没有完整题干选项时误入 Decision Engine v1。
+* 正式把公开版定位为 **Codex + WorkBuddy 双端 Skill**：同一个 `skills/xizong-study-review/SKILL.md` 可同时作为 Codex Skill 和腾讯 WorkBuddy Skill 使用。
+* 更新 WorkBuddy 安装说明：WorkBuddy 用户直接安装或上传 `skills/xizong-study-review/`，不需要维护另一套 WorkBuddy 专用包。
+* 更新 WorkBuddy 试用说明：可以把提示词放进 WorkBuddy 软件里的任务、项目指令或 IM 助理消息中快速试用。
+* 增加 `examples/07-workbuddy-review.md`，展示 WorkBuddy 中可复制的审稿输出和 `WorkBuddy Handoff` 清单。
+* 增加 WorkBuddy 回归测试，防止把 WorkBuddy 误写成普通工作区，也防止在没有文件/连接器权限时声称能直接同步或编辑文档。
 
 ### 2026/6/20  v0.1.0-public-preview
 
@@ -57,11 +59,15 @@
 ## 介绍
 很多人学西综卡住，不是因为资料不够，而是因为“看懂了”到“能讲清楚”，再到“能做题选出来”之间断了一截。
 
-`Xizong Exam Intelligence Tutor` 就是为这段断层做的公开版 Codex skill。它不是题库，不是押题工具，也不是一键生成百科总结的 AI。它更像一个专业西综学习助教：看你的原文输出，判断你现在到底懂到哪一步，找出机制链断点和错因，再给你一个很小但能推进学习的下一步。
+`Xizong Exam Intelligence Tutor` 就是为这段断层做的公开版 Skill。它现在明确支持两类 AI Agent 软件：**OpenAI Codex** 和 **腾讯 WorkBuddy**。同一个 `SKILL.md`，既可以作为 Codex Skill 安装，也可以作为 WorkBuddy Skill 安装或上传。
+
+它不是题库，不是押题工具，也不是一键生成百科总结的 AI。它更像一个专业西综学习助教：看你的原文输出，判断你现在到底懂到哪一步，找出机制链断点和错因，再给你一个很小但能推进学习的下一步。
 
 它可以做主动输出审稿、笔记原文批注、错题错因诊断、生理-病理-内科 callback、真题结构理解，以及在完整题干和选项出现时的考试决策辅助。
 
-公开版名称是 `Xizong Exam Intelligence Tutor`，安装目录仍然是 `skills/xizong-study-review`。这样既保留稳定的 skill 触发名，也让公开展示更清晰。
+公开版名称是 `Xizong Exam Intelligence Tutor`，安装目录仍然是 `skills/xizong-study-review`。核心文件是 `SKILL.md`，同一份 Skill 兼容 Codex 和 WorkBuddy，既保留稳定的 skill 触发名，也让公开展示更清晰。
+
+对 WorkBuddy 用户来说，WorkBuddy 指的是腾讯 CodeBuddy 的 AI Agent 软件，而不是一个普通“工作区”标签。这个仓库的 WorkBuddy 支持不是另写一份提示词，而是让同一份西综学习审稿 Skill 可以在 WorkBuddy 软件中复用。
 
 这个仓库是公开、安全、脱敏版本。它只包含学习工作流、提示词合同、模板、预览图和边界规则，不包含讲义 PDF、真题 PDF、答案解析、OCR 文本、未脱敏个人笔记或私人学习记录。仓库中保留了一张已授权、已遮挡讲义来源的真实工作流截图，用来展示实际审稿效果。
 
@@ -73,12 +79,12 @@
 
 ## 你能立刻感受到的变化
 
-1. **它不替你写笔记。** 它会保留你的原文，在关键句下面插入 `Codex 核对`，告诉你哪里只是背了结论，哪里会影响做题。
+1. **它不替你写笔记。** 它会保留你的原文，在关键句下面插入学习审稿块，告诉你哪里只是背了结论，哪里会影响做题。
 2. **它会判断你到底懂没懂。** 不是每次都让你刷题，而是先判断你是刚懂一点、理解不稳、正在巩固，还是已经可以考试化。
 3. **它能找出真正错因。** 错题不再只写“知识点不会”，而是拆成知识缺口、机制断裂、映射失败、干扰项未识别、临床决策错误或优先级错误。
 4. **它会把生理、病理、内科接起来。** 如果内科表现背后的生理/病理链断了，它会让你只回扣一个小点，不会让你整章重学。
 5. **它会安全使用真题。** 真题只用于理解命题表达、干扰项和决策路径，不押题、不分发文件、不生成题库。
-6. **它支持主流文档软件和 WorkBuddy。** Obsidian、WorkBuddy、Notion、FlowUs、飞书文档、腾讯文档、语雀、WPS、Word、Google Docs、普通 Markdown、纯文本都能适配。
+6. **它支持主流文档软件和 WorkBuddy。** Obsidian、Notion、FlowUs、飞书文档、腾讯文档、语雀、WPS、Word、Google Docs、普通 Markdown、纯文本都能适配；WorkBuddy 用户可以直接安装/上传同一个 `SKILL.md`，也可以在任务、项目指令或 IM 助理消息中快速试用。
 
 ## 快速开始
 
@@ -89,7 +95,19 @@ git clone https://github.com/techicen/xizong-study-review.git
 cd xizong-study-review
 ```
 
-安装 skill：
+这个仓库的 Skill 目录是同一个：
+
+```text
+skills/xizong-study-review/
+```
+
+WorkBuddy 用户可以安装或上传这个目录，核心文件是：
+
+```text
+skills/xizong-study-review/SKILL.md
+```
+
+Codex 用户可以使用安装脚本：
 
 ```bash
 bash scripts/install-skill.sh
@@ -101,7 +119,7 @@ Windows 用户：
 scripts\install-skill.bat
 ```
 
-重启 Codex 后，可以直接试：
+安装后，可以在 Codex 或 WorkBuddy 中直接试：
 
 ```markdown
 请使用 xizong-study-review skill。
@@ -115,56 +133,62 @@ scripts\install-skill.bat
 6. 最后只给 1-2 个下一步任务。
 ```
 
-### 在 WorkBuddy 里使用
+### 在 WorkBuddy 软件里使用
 
-WorkBuddy 支持不需要单独的 skill 目录：安装同一个 `xizong-study-review` skill，然后在能调用本地 Codex skills 的 WorkBuddy 工作区或对话里使用。
+WorkBuddy 是腾讯 CodeBuddy 的 AI Agent 软件，不是普通笔记软件，也不只是一个“工作区”。它支持任务、工作目录、结果区、项目、专家、Skill、连接器和 IM 助理等能力。当前仓库采用同一份 Skill 同时兼容 Codex 和 WorkBuddy：
+
+* Codex：安装 `skills/xizong-study-review/`。
+* WorkBuddy：安装或上传 `skills/xizong-study-review/`，核心文件是 `SKILL.md`。
+
+如果只是想快速试用，也可以把下面的提示词放进 WorkBuddy 软件里的任务、项目指令或 IM 助理消息中。正式使用时，建议直接安装/上传 `skills/xizong-study-review/`，避免维护两套规则。
 
 它特别适合三类人：
 
-* 已经在 WorkBuddy 里管理学习任务，希望把“今天学了什么、哪里没懂、下一步干什么”整理成可执行清单的人。
-* 用 Obsidian、飞书、Notion、Word 等工具写笔记，但想先在 WorkBuddy 里快速过一遍质量的人。
+* 已经使用 WorkBuddy 这个 AI Agent 软件，希望把“今天学了什么、哪里没懂、下一步干什么”整理成可执行清单的人。
+* 用 Obsidian、飞书、Notion、Word 等工具写笔记，但想在 WorkBuddy 中调用 Skill 快速过一遍质量的人。
 * 错题复盘总是写成“知识点不会”，想让 AI 帮忙拆成机制断裂、映射失败、干扰项误判或临床优先级错误的人。
 
 可以这样问：
 
 ```markdown
-请在 WorkBuddy 中使用 xizong-study-review skill。
+请在 WorkBuddy 软件中使用 xizong-study-review Skill 处理下面这段学习输出。
 
 请按西综专业学习助教模式审稿我的笔记。
-我的工作区是 WorkBuddy，请输出可复制回任务或文档的 Markdown review block。
-除非本次会话里 WorkBuddy 已经提供可编辑文件、浏览器或连接器，否则不要声称能直接改文档或插入评论。
+我使用的软件是 WorkBuddy，请输出可复制回任务或文档的 Markdown review block。
+请最后给一个 WorkBuddy Handoff 清单，列出下一步只做 1-2 件事。
+除非当前 WorkBuddy 软件已经授权文件、连接器或直接编辑能力，否则不要声称能直接改文档、同步文件或插入评论。
 ```
 
-没有直接连接器时，skill 默认给复制粘贴级 Markdown；如果 WorkBuddy 提供了选中文本、上传文件或可编辑文档上下文，Codex 可以读取这些上下文，但仍要保留学习者原文。
+默认用法是复制粘贴级 Markdown；如果 WorkBuddy 软件中已经加入了文件、工作目录、连接器、项目资料库或 IM 助理上下文，就把这些当作任务上下文使用，但仍要保留学习者原文。
 
 #### 3 分钟试用方式
 
 1. 从你今天的笔记里复制 3-8 行，不要复制整章。
 2. 在 WorkBuddy 里粘贴这段笔记，并说明“这是我的原文，不要重写全文”。
-3. 要求它只输出：学习状态、1-2 个主要问题、一个 `Codex Review` block、一个 `WorkBuddy Handoff` 清单。
+3. 要求它只输出：学习状态、1-2 个主要问题、一个通用 review block、一个 `WorkBuddy Handoff` 清单。
 
 最小可用提示词：
 
 ```markdown
-请在 WorkBuddy 中使用 xizong-study-review skill。
+请在 WorkBuddy 软件中使用 xizong-study-review Skill 处理下面这段学习输出。
 
 下面是我的西综原文输出。请不要重写全文，只做审稿：
 1. 判断我是 beginner / unstable / consolidating / exam-ready / confused-zone 中哪一类；
 2. 只找 1-2 个主要问题；
-3. 在原文下方给一个可复制的 Codex Review block；
+3. 在原文下方给一个可复制的 review block；
 4. 最后给 WorkBuddy Handoff：今天下一步只做 1-2 件事。
 
 我的原文：
 ```
 
-#### WorkBuddy 里的典型场景
+#### Codex 和 WorkBuddy 都适用的典型学习场景
 
-| 场景 | 你可以粘贴什么 | 它应该产出什么 |
+| 场景 | 你可以给 Skill 什么 | Skill 应该产出什么 |
 | --- | --- | --- |
 | 今日学习复盘 | 一段刚写完的疾病机制笔记 | 学习状态、机制断点、下一步小任务 |
 | 错题复盘 | 题干摘要、你的错误选项、你当时的理由 | 错因分类、干扰项识别、重做前该补的一个点 |
 | 讲义后主动输出 | 不看讲义写出的 5-10 行解释 | 哪些是背结论、哪些能支持做题、是否需要 callback |
-| WorkBuddy 任务交接 | 今天学过的主题和没完成的问题 | `WorkBuddy Handoff` 清单，方便明天继续 |
+| 学习交接 / 下一步计划 | 今天学过的主题和没完成的问题 | Handoff 清单，方便下次在 Codex 或 WorkBuddy 中继续 |
 
 ## 示例和预览
 
@@ -194,7 +218,7 @@ WorkBuddy 支持不需要单独的 skill 目录：安装同一个 `xizong-study-
 - 错题复盘只写“知识点不会”，没有找到真正错因；
 - 看完解析觉得懂了，却看不出出题人怎么藏答案、怎么设计干扰项。
 
-这个 skill 的核心价值是：让 Codex 不再替你写百科总结，而是贴着你的真实输出判断你到底学到了哪一步。
+这个 Skill 的核心价值是：让 AI Agent 不再替你写百科总结，而是贴着你的真实输出判断你到底学到了哪一步。
 
 它会回答：
 
@@ -207,13 +231,13 @@ WorkBuddy 支持不需要单独的 skill 目录：安装同一个 `xizong-study-
 
 ## 它的优点
 
-- **保护你的主动输出。** 不默认重写全文，而是在你的原文下方插入 `Codex 核对` 或通用 review block，告诉你哪里影响理解和做题。
+- **保护你的主动输出。** 不默认重写全文，而是在你的原文下方插入通用 review block，告诉你哪里影响理解和做题。
 - **能识别学习状态。** 不是所有问题都该直接做题。有时要回到机制，有时要做对比，有时才能进入选项决策。
 - **能诊断错因。** 错题不再只是“不会”，而会拆成 knowledge gap、mechanism break、mapping failure、examiner trap not recognized、clinical decision error、threshold / priority error。
 - **能把三门课接起来。** 它会提醒你把生理机制、病理变化和内科表现连成一条能做题的链。
 - **能安全使用真题。** 真题只用于理解命题表达、干扰项和决策路径，不用于押题，不生成题库，不分发真题文件。
 - **支持用户自己的资料。** 你可以上传自己的讲义、笔记、习题、真题文本或截图，skill 会先识别文件类型、可读性、是否含答案和适合用途。
-- **不强依赖 Obsidian。** Obsidian 是最佳 Markdown 体验之一，但 WorkBuddy、Notion、FlowUs、飞书文档、语雀、Word、普通 Markdown、直接复制粘贴都可以用。
+- **不强依赖 Obsidian。** Obsidian 是最佳 Markdown 体验之一，但 Notion、FlowUs、飞书文档、语雀、Word、普通 Markdown、直接复制粘贴都可以用；WorkBuddy 可作为 AI Agent 软件入口。
 - **理解稳定后才进入决策。** 只有当你给出完整题干和选项，并且需要快速排除时，才启用 Decision Engine v1。
 
 ## V3 和 v1 到底是什么意思
@@ -235,26 +259,26 @@ WorkBuddy 支持不需要单独的 skill 目录：安装同一个 `xizong-study-
 
 所以这个 skill 不是把所有学习都变成考试。它会先判断：你现在是否已经理解到足以做决策？如果还没有，就继续停在 V3 修理解；如果已经理解稳定，再进入 v1 做选项排除。
 
-## 支持主流笔记和文档软件
+## 支持主流笔记、文档和 AI Agent 软件
 
-Obsidian 只是因为支持 Markdown callout，所以很适合展示 `Codex 核对`。但它不是必要条件。主流笔记软件和协作文档都可以用。
+Obsidian 只是因为支持 Markdown callout，所以很适合展示审稿块。但它不是必要条件。主流笔记软件、协作文档、Codex 和 WorkBuddy 都可以用同一份 Skill。
 
 你可以这样用：
 
-- **Obsidian：** 使用 `> [!warning] Codex 核对` 形式。
+- **Obsidian：** 使用 Markdown callout 形式。
 - **Notion：** 把核对内容粘在原文下方，用引用块、折叠块、callout 块都可以。
 - **FlowUs：** 把核对内容粘在原文下方，用引用块或类似 callout 的块。
-- **飞书文档 / Lark Docs：** 把 `Codex Review` 放在原段落下方，或把每一条核对转成文档评论。
+- **飞书文档 / Lark Docs：** 把 review block 放在原段落下方，或把每一条核对转成文档评论。
 - **腾讯文档 / 语雀：** 适合用“原文摘录 + 审稿表格”的形式。
-- **WorkBuddy：** 使用通用 Markdown `Codex Review`，需要形成后续任务时再加一个简短的 `WorkBuddy Handoff` 清单。
+- **WorkBuddy：** 直接安装/上传同一个 `skills/xizong-study-review/` Skill；快速试用时，也可以把提示词粘贴到 WorkBuddy 任务、项目指令或 IM 助理消息中，使用通用 Markdown review block，需要形成后续任务时再加一个简短的 `WorkBuddy Handoff` 清单。
 - **WPS / Microsoft Word / Google Docs：** 可以用批注、评论、段落下方审稿表格。
 - **普通 Markdown：** 原文下面直接加 review block。
-- **没有笔记软件：** 直接把段落粘给 Codex，修完后复制回你自己的学习文档。
+- **没有笔记软件：** 直接把段落粘给 Codex 或 WorkBuddy，修完后复制回你自己的学习文档。
 
 通用格式：
 
 ```markdown
-> Codex Review
+> Review
 > 问题：
 > 为什么影响理解/做题：
 > 修正方向：
@@ -262,7 +286,7 @@ Obsidian 只是因为支持 Markdown callout，所以很适合展示 `Codex 核�
 > 下一步动作：
 ```
 
-关键不是使用哪个软件，而是保留你的原文，让 Codex 贴着你的表达指出问题，而不是替你生成一篇看起来很漂亮但不属于你的总结。
+关键不是使用哪个软件，而是保留你的原文，让 Skill 贴着你的表达指出问题，而不是替你生成一篇看起来很漂亮但不属于你的总结。
 
 对飞书文档、腾讯文档、Word、Google Docs 这类协作文档，更推荐表格格式：
 
@@ -274,35 +298,48 @@ Obsidian 只是因为支持 Markdown callout，所以很适合展示 `Codex 核�
 
 ## 文档软件识别与个性化协同
 
-这个 skill 不只是“能粘贴到不同软件里”，而是会先识别用户使用的笔记/文档平台，再选择对应输出模板。
+这个 Skill 不只是“能粘贴到不同软件里”，而是会先识别用户使用的是笔记软件、协作文档，还是 Codex / WorkBuddy 这类 AI Agent 软件，再选择对应输出模板。
 
 | 平台 | 推荐输出 | 适合场景 |
 | --- | --- | --- |
-| Obsidian | Markdown callout | 原子笔记、双链笔记、想保留 `Codex 核对` 块 |
+| Obsidian | Markdown callout | 原子笔记、双链笔记、想保留审稿块 |
 | Notion | callout / toggle / quote 块 | 想把审稿折叠在原文下方 |
 | FlowUs | 引用块或类 callout 块 | 使用国产 Notion-like 工作区 |
 | 飞书文档 / Lark Docs | 审稿表格或评论式要点 | 协作文档、段落审稿、多人复盘 |
 | 腾讯文档 | 精简审稿表格 | 团队可读的订正表 |
 | 语雀 | 原文引用 + review block | 知识库式笔记 |
-| WorkBuddy | 通用 Markdown review block + `WorkBuddy Handoff` 清单 | 想把审稿结果直接变成工作区任务的用户 |
+| Codex | 同一份 `SKILL.md` + 平台适配 review block + 下一步清单 | 想在 Codex 中长期审稿、复盘、校准学习状态的用户 |
+| WorkBuddy | 同一份 `SKILL.md` + 可复制 Markdown review block + `WorkBuddy Handoff` 清单 | 想在 WorkBuddy 软件中安装 Skill 或快速试用审稿流程的用户 |
 | WPS / Word / Google Docs | 批注式审稿或表格 | 文档编辑和审阅流程 |
-| 普通 Markdown / 纯文本 | 通用 `Codex Review` 块 | 不想使用专门笔记软件 |
+| 普通 Markdown / 纯文本 | 通用 review block | 不想使用专门笔记软件 |
 
 协同有三种层级：
 
-1. **复制粘贴级协同：** Codex 输出适合该软件的块、表格或评论式文字，用户直接粘贴。
-2. **导出文件级协同：** 用户上传 Markdown、DOCX、HTML、CSV 或导出文本后，Codex 按原结构生成审稿结果。
-3. **直接文档协同：** 如果用户的 Codex 环境有浏览器、连接器、API 或可编辑文档文件，并且用户授权，Codex 可以更精确地定位段落、准备评论或生成插入补丁。
+1. **复制粘贴级协同：** Skill 输出适合该软件的块、表格或评论式文字，用户直接粘贴。
+2. **导出文件级协同：** 用户上传 Markdown、DOCX、HTML、CSV 或导出文本后，Skill 按原结构生成审稿结果。
+3. **直接文档协同：** 如果 Codex 或 WorkBuddy 环境有浏览器、连接器、API、可编辑文档文件或直接编辑权限，并且用户授权，AI 可以更精确地定位段落、准备评论或生成插入补丁。
 
-公开版默认承诺前两种：复制粘贴级协同和导出文件级协同。直接编辑文档取决于用户的 Codex 或 WorkBuddy 环境是否提供对应工具和权限。
+公开版默认承诺前两种：复制粘贴级协同和导出文件级协同。Codex 和 WorkBuddy 都可直接使用 `skills/xizong-study-review/SKILL.md`，但直接编辑文档仍取决于当前环境是否提供对应工具、连接器或权限。
 
 ## 完整案例：从安装到笔记审稿
 
-下面是一个公开版使用示例。内容是虚构的 COPD 学习输出，只演示流程，不使用任何私有讲义、真题或个人笔记。你可以在 Obsidian、WorkBuddy、Notion、FlowUs、飞书文档、腾讯文档、语雀、WPS、Word、Google Docs、普通 Markdown 或直接复制粘贴中使用这个流程。
+下面是一个公开版使用示例。内容是虚构的 COPD 学习输出，只演示流程，不使用任何私有讲义、真题或个人笔记。你可以在 Obsidian、Notion、FlowUs、飞书文档、腾讯文档、语雀、WPS、Word、Google Docs、普通 Markdown 或直接复制粘贴中使用这个流程；WorkBuddy 用户可以安装同一个 `SKILL.md`，也可以把同一段提示词作为任务指令快速试用。
 
-### 1. 安装 skill
+### 1. 安装 Skill
 
-最快安装：
+Codex 和 WorkBuddy 使用同一个 Skill 目录：
+
+```text
+skills/xizong-study-review/
+```
+
+WorkBuddy 用户直接安装或上传这个目录即可。核心文件是：
+
+```text
+skills/xizong-study-review/SKILL.md
+```
+
+Codex 用户最快安装：
 
 ```bash
 git clone https://github.com/techicen/xizong-study-review.git
@@ -310,15 +347,13 @@ cd xizong-study-review
 bash scripts/install-skill.sh
 ```
 
-也可以手动复制：
+Codex 用户也可以手动复制：
 
 ```bash
 cp -R xizong-study-review/skills/xizong-study-review ~/.codex/skills/
 ```
 
-重新开启一个 Codex 会话，就可以使用 `xizong-study-review`。
-
-如果在 WorkBuddy 里使用，安装目录不变。只要当前 WorkBuddy 环境能调用本地 Codex skills，就用同一个触发名 `xizong-study-review`。没有直接编辑连接器时，请让它输出可复制粘贴的 Markdown。
+安装后，在 Codex 或 WorkBuddy 中都可以使用 `xizong-study-review`。如果只是想快速试用，也可以把上面的审稿提示词粘贴到 WorkBuddy 任务、项目指令或 IM 助理消息中，并要求输出可复制粘贴的 Markdown。
 
 ### 2. 可选：建立自己的私有学习记录
 
@@ -343,11 +378,11 @@ cp xizong-study-review/skills/xizong-study-review/assets/templates/*.template.md
 2. 保留我的原文。
 3. 判断我的学习状态。
 4. 只找 1-2 个主要问题。
-5. 在相关原文下方插入 Codex 核对或通用 review block。
+5. 在相关原文下方插入学习核对或通用 review block。
 6. 加上 Learning Feedback。
 7. 最后只给 1-2 个下一步任务。
 
-我的笔记软件或工作区是：Obsidian / WorkBuddy / Notion / FlowUs / 飞书文档 / 腾讯文档 / 语雀 / WPS / Word / Google Docs / Markdown / 纯文本。
+我的笔记软件或 AI Agent 软件是：Obsidian / WorkBuddy / Notion / FlowUs / 飞书文档 / 腾讯文档 / 语雀 / WPS / Word / Google Docs / Markdown / 纯文本。
 ```
 
 ### 4. 用户粘贴一段笔记输出
@@ -386,7 +421,7 @@ V3
 
 COPD 的本质是慢性气流受限，主要和小气道炎症有关。
 
-> [!warning] Codex 核对
+> [!warning] 学习核对
 > **问题**：这句话方向对，但还不够考试化。COPD 的气流受限不能只归因于小气道炎症，还要补上肺泡壁破坏后弹性回缩力下降。
 > **为什么影响理解/做题**：如果只记“小气道炎症”，遇到肺气肿、呼气性气流受限、残气量增加、桶状胸等题干时，容易把机制链接不上。
 > **修正方向**：改成“小气道阻塞 + 肺泡弹性回缩力下降，共同造成呼气相气流受限”。
@@ -395,7 +430,7 @@ COPD 的本质是慢性气流受限，主要和小气道炎症有关。
 
 患者会出现呼气困难，是因为气道变窄，气体排不出来。
 
-> [!warning] Codex 核对
+> [!warning] 学习核对
 > **问题**：这句是现象描述，还没有解释“为什么呼气时更明显”。
 > **为什么影响理解/做题**：考试常把机制藏在呼气、残气量、肺过度充气、FEV1/FVC 下降这些表达里。
 > **修正方向**：补一句“呼气时胸内压升高，小气道更易塌陷；弹性回缩力下降使气体排出更差”。
@@ -404,7 +439,7 @@ COPD 的本质是慢性气流受限，主要和小气道炎症有关。
 
 肺气肿时肺泡被破坏，所以会影响换气。治疗上主要用支气管扩张剂。
 
-> [!success] Codex 核对
+> [!success] 学习核对
 > 这段可以保留。它的优点是：已经把肺气肿和治疗方向放在同一段里，后续可以继续补“为什么支气管扩张剂是症状改善而不是逆转肺泡破坏”。
 
 ## Learning Feedback
@@ -426,13 +461,13 @@ COPD 的本质是慢性气流受限，主要和小气道炎症有关。
 
 ```markdown
 请不要使用 Obsidian callout。
-请使用适合 WorkBuddy / Notion / FlowUs / 飞书文档 / 腾讯文档 / Word / Google Docs / 普通 Markdown 的 Codex Review block。
+请使用适合 WorkBuddy / Notion / FlowUs / 飞书文档 / 腾讯文档 / Word / Google Docs / 普通 Markdown 的通用 review block。
 ```
 
 输出可以变成：
 
 ```markdown
-> Codex Review
+> Review
 > 问题：这句话方向对，但还不够考试化。
 > 为什么影响理解/做题：如果只记“小气道炎症”，遇到肺气肿、呼气性气流受限、残气量增加时容易断链。
 > 修正方向：补上“小气道阻塞 + 肺泡弹性回缩力下降”。
@@ -443,7 +478,7 @@ COPD 的本质是慢性气流受限，主要和小气道炎症有关。
 ### 7. 根据批注继续修
 
 ```markdown
-我已经根据上面的 Codex 核对修改了 COPD 段落。
+我已经根据上面的学习核对修改了 COPD 段落。
 
 请做二次审核：
 1. 判断机制链是否已经闭合。
@@ -516,7 +551,7 @@ tests/regression/
 1. 判断当前学习状态；
 2. 找出 1-2 个主要问题；
 3. 保留原文，不要重写全文；
-4. 如果是笔记内容，请在原文下方插入 Codex 核对或通用 review block；
+4. 如果是笔记内容，请在原文下方插入学习核对或通用 review block；
 5. 加上 Learning Feedback；
 6. 最后只给 1-2 个下一步任务。
 ```
